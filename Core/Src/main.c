@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "dma.h"
 #include "fdcan.h"
 #include "tim.h"
@@ -30,6 +31,7 @@
 #include "bsp_can.h"
 #include "bsp_pwm.h"
 #include "bsp_Motor_Encoder.h"
+#include "arm_math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -55,6 +57,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -98,6 +101,7 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM8_Init();
   MX_TIM3_Init();
+  MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
 RC_Init();
 ECF_CAN_Init();
@@ -113,6 +117,12 @@ ECF_CAN_Init();
 		HAL_Delay(20);
   /* USER CODE END 2 */
 
+  /* Call init function for freertos objects (in freertos.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)

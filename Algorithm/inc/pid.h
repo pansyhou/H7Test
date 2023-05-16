@@ -54,7 +54,7 @@ typedef enum
 } PID_mode_e;
 
 //一阶低通滤波参数
-typedef __packed struct
+typedef  struct
 {
 	fp32 input;		 //输入数据
 	fp32 last_input; //上次数据
@@ -62,7 +62,7 @@ typedef __packed struct
 	fp32 num;		 //滤波参数
 } first_order_filter_t;
 
-typedef __packed struct Pid_parameter_t // pid结构体变量
+typedef  struct Pid_parameter_t // pid结构体变量
 {
 	fp32 Kp;
 	fp32 Ki;

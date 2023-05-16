@@ -74,32 +74,6 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 }
 
 
-void MotorDataDeal(FDCAN_HandleTypeDef *hfdcan){
-    //rx header structure
-    FDCAN_RxHeaderTypeDef rx_message;
-
-    uint8_t Rx_Data[8];
-
-    //rx data to Rx_Data
-    if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &rx_message, Rx_Data) == HAL_OK)
-    {
-        //restart notification
-        HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
-
-        switch (rx_message.Identifier)
-        {
-            case 0x201:
-            {
-							CAN_DATA_Encoder_Deal((int16_t) ((Rx_Data[0] << 8) + (Rx_Data[1])), //????
-                                  (int16_t) ((Rx_Data[2] << 8) + (Rx_Data[3])), //????
-                                  1);
-            }break;
-            default:
-                break;
-        }
-    }
-
-}
 
 static FDCAN_TxHeaderTypeDef Txmessage;				//发送的消息
 

@@ -57,7 +57,7 @@ extern kalman_filter_init_t visual_kalman_filter_init;
 extern kalman_filter_t visual_kalman_filter;
 
 //������ֵ�˲����������㣩
-typedef __packed struct
+typedef  struct
 {
     fp32 Input;        //��ǰȡ��ֵ
     int32_t count_num; //ȡ������
@@ -68,7 +68,7 @@ typedef __packed struct
 } sliding_mean_filter_type_t;
 
 //һ�׵�ͨ�˲�����
-typedef __packed struct
+typedef  struct
 {
     fp32 input;      //��������
     fp32 last_input; //�ϴ�����
@@ -81,7 +81,7 @@ extern float first_order_filter(first_order_filter_type_t *first_order_filter_ty
 extern void first_order_filter_init(first_order_filter_type_t *first_order_filter_type, fp32 num);
 
 /* ƽ���˲� */
-float sliding_mean_filter(sliding_mean_filter_type_t *mean_filter, fp32 Input, int32_t num); //��ֵ�����˲�
+extern float sliding_mean_filter(sliding_mean_filter_type_t *mean_filter, fp32 Input, int32_t num); //��ֵ�����˲�
 void sliding_mean_filter_init(sliding_mean_filter_type_t *mean_filter);                      //��ֵ�����˲���ʼ�����ɲ��ã�ֱ�Ӷ���ṹ��ʱ����ֵ��
 
 #endif

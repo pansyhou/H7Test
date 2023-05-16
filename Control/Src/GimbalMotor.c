@@ -26,7 +26,7 @@
 #include "bsp_can.h"
 #include "bsp_pwm.h"
 #include "pid.h"
-#include "imu_task.h"
+
 #include "SYSInit.h"
 #include "arm_math.h"
 #include "BoardConfig.h"
@@ -34,10 +34,10 @@ Lift_UP_t Lift_t;
 Three_D_Arm_t TD_t;
 Clip_Module_t Clip_t;
 Grasp_t Grasp;
-can_std_msg Gimbal_Can_msg;
-const INS_t *IMU;
 
-#ifdef configUSE_C_Board|configUSE_F4
+
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 void MotorDataDeal(CAN_RxHeaderTypeDef *header, uint8_t *data);
 #endif
 
@@ -45,7 +45,7 @@ Grasp_t *Return_Grasp_t_Pointer(void) {
     return &Grasp;
 }
 
-#ifdef configUSE_C_Board | configUSE_F4
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 /**
  *  这个函数用于CAN中断调用的数据处理函数，已经在CAN_Drive注册了
  * @param header
@@ -60,7 +60,7 @@ void MotorDataDeal(FDCAN_HandleTypeDef *hfdcan) {
     FDCAN_RxHeaderTypeDef rx_message;
 
     uint8_t data[8];
-    if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &rx_message, Rx_Data) == HAL_OK) {
+        if (HAL_FDCAN_GetRxMessage(&hfdcan1, FDCAN_RX_FIFO0, &rx_message, data) == HAL_OK) {
         //restart notification
         HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
         switch (rx_message.Identifier) {
@@ -84,7 +84,7 @@ void MotorDataDeal(FDCAN_HandleTypeDef *hfdcan) {
              * 8 横移2006
              * 9 yaw6020
              */
-#ifdef configUSE_C_Board|configUSE_F4
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
             switch (header->StdId) {
 #endif
             case Pitch_Motor_Encoder_ID: {
@@ -275,9 +275,7 @@ void Gimbal_Motor_Init(void) {
 
     //PWM初始化
     ECF_PWM_50HZ_Output_Init(&htim1, TIM_CHANNEL_1, TD_t.SecondPitch_Pwm_Cmp);
-    //set can standard id
-    Gimbal_Can_msg.std_id = 0x200;
-    Gimbal_Can_msg.dlc = 8;
+
 
 }
 
@@ -318,12 +316,12 @@ void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, 
 //    }
 
     //cal arccos for pitch
-    float l1_square ;
-    float l2_square ;
-    float l3_square ;
-    arm_power_f32(&Arm_t->l1, 1, &l1_square);
-    arm_power_f32(&Arm_t->l2, 1, &l2_square);
-    arm_power_f32(&Arm_t->l3, 1, &l3_square);
+        float l1_square ;
+        float l2_square ;
+        float l3_square ;
+        arm_power_f32(&Arm_t->l1, 1, &l1_square);
+        arm_power_f32(&Arm_t->l2, 1, &l2_square);
+        arm_power_f32(&Arm_t->l3, 1, &l3_square);
 
     Arm_t->Pitch1_Angle = acosf((l1_square + l3_square - l2_square) / (2 * Arm_t->l1 * Arm_t->l3)) + Arm_t->l3ToHorizontalPlane_Angle;
     Arm_t->Pitch2_Angle = acosf((l1_square + l2_square - l3_square) / (2 * Arm_t->l1 * Arm_t->l2));

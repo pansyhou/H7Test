@@ -37,7 +37,18 @@
 /* ************************ Hardward ******************** */	
 #include "main.h"
 #include "cmsis_os.h"
+
+#ifdef configUSE_H7
+#include "fdcan.h"
+
+#endif
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 #include "can.h"
+
+#endif
+
+
 #include "dma.h"
 #include "usart.h"
 #include "gpio.h"
@@ -56,8 +67,16 @@
 /************************* BSP *************************/
 #include "bsp_can.h"
 #include "bsp_dr16.h"
+
+#ifdef configUSE_H7
+
+#endif
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 #include "bsp_dwt.h"
 #include "BMI088driver.h"
+#endif
+
 
 
 void Sys_Init(void);

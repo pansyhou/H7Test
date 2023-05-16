@@ -14,4 +14,9 @@
 
 #define configUSE_H7
 
+
+#ifdef configUSE_H7
+
+#endif
+
 #endif //H7TEST_BOARD_CONFIG_H

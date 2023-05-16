@@ -37,4 +37,5 @@ h7test/bsp_can.o: ..\Bsp\bsp_can.c ..\Bsp\bsp_can.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\Core\Inc\fdcan.h ..\Bsp\bsp_Motor_Encoder.h ..\Bsp\struct_typedef.h
+  ..\platform\BoardConfig.h ..\Core\Inc\fdcan.h \
+  ..\Bsp\bsp_Motor_Encoder.h ..\Algorithm\inc\struct_typedef.h

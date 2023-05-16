@@ -2,9 +2,20 @@
 #define __GIMBAL_MOTOR_H
 
 #include "bsp_can.h"
-#include "stm32f407xx.h"
 #include "rmmotor.h"
+
+
+
+
+#ifdef configUSE_H7
+#include "fdcan.h"
+#include "stm32h750xx.h"
+#endif
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 #include "can.h"
+#include "stm32f407xx.h"
+#endif
 
 //抬升电机
 #define Lift_Motor_ID 0x201
@@ -71,7 +82,7 @@
 #define LastJoint_2006_Ppid_D 1.0f
 
 
-typedef __packed struct
+typedef  struct
 {
     Motor_t Lift_Motor[2];
 //    VL53L0_t *VL53L0;
@@ -101,13 +112,13 @@ typedef  struct
     float l3ToHorizontalPlane_Angle;
 } Three_D_Arm_t;
 
-typedef __packed struct{
+typedef  struct{
     Motor_t Clip_Motor[2];
     Encoder_t *(*Get_Encoder)(uint8_t);
 }Clip_Module_t;
 
 
-typedef __packed struct
+typedef  struct
 {
     Lift_UP_t *Lift_t;  //抬升结构体
     Three_D_Arm_t *TD_t;//机械臂结构体

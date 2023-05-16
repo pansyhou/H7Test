@@ -264,24 +264,10 @@ CMakeFiles/H7Test.elf.dir/Control/Src/SYSInit.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Control/Src/SYSInit.c.s"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Control\Src\SYSInit.c -o CMakeFiles\H7Test.elf.dir\Control\Src\SYSInit.c.s
 
-CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
-CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj: C:/Users/16771/Desktop/H7Test/Control/Src/referee.c
-CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj"
-	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj -MF CMakeFiles\H7Test.elf.dir\Control\Src\referee.c.obj.d -o CMakeFiles\H7Test.elf.dir\Control\Src\referee.c.obj -c C:\Users\16771\Desktop\H7Test\Control\Src\referee.c
-
-CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.i"
-	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Control\Src\referee.c > CMakeFiles\H7Test.elf.dir\Control\Src\referee.c.i
-
-CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.s"
-	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Control\Src\referee.c -o CMakeFiles\H7Test.elf.dir\Control\Src\referee.c.s
-
 CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj: C:/Users/16771/Desktop/H7Test/Control/Src/rmmotor.c
 CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj -MF CMakeFiles\H7Test.elf.dir\Control\Src\rmmotor.c.obj.d -o CMakeFiles\H7Test.elf.dir\Control\Src\rmmotor.c.obj -c C:\Users\16771\Desktop\H7Test\Control\Src\rmmotor.c
 
 CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.i: cmake_force
@@ -295,7 +281,7 @@ CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj: C:/Users/16771/Desktop/H7Test/Core/Src/dma.c
 CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj -MF CMakeFiles\H7Test.elf.dir\Core\Src\dma.c.obj.d -o CMakeFiles\H7Test.elf.dir\Core\Src\dma.c.obj -c C:\Users\16771\Desktop\H7Test\Core\Src\dma.c
 
 CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.i: cmake_force
@@ -309,7 +295,7 @@ CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj: C:/Users/16771/Desktop/H7Test/Core/Src/fdcan.c
 CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj -MF CMakeFiles\H7Test.elf.dir\Core\Src\fdcan.c.obj.d -o CMakeFiles\H7Test.elf.dir\Core\Src\fdcan.c.obj -c C:\Users\16771\Desktop\H7Test\Core\Src\fdcan.c
 
 CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.i: cmake_force
@@ -319,6 +305,20 @@ CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.i: cmake_force
 CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.s"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Core\Src\fdcan.c -o CMakeFiles\H7Test.elf.dir\Core\Src\fdcan.c.s
+
+CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj: C:/Users/16771/Desktop/H7Test/Core/Src/freertos.c
+CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj -MF CMakeFiles\H7Test.elf.dir\Core\Src\freertos.c.obj.d -o CMakeFiles\H7Test.elf.dir\Core\Src\freertos.c.obj -c C:\Users\16771\Desktop\H7Test\Core\Src\freertos.c
+
+CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Core\Src\freertos.c > CMakeFiles\H7Test.elf.dir\Core\Src\freertos.c.i
+
+CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Core\Src\freertos.c -o CMakeFiles\H7Test.elf.dir\Core\Src\freertos.c.s
 
 CMakeFiles/H7Test.elf.dir/Core/Src/gpio.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Core/Src/gpio.c.obj: C:/Users/16771/Desktop/H7Test/Core/Src/gpio.c
@@ -767,10 +767,150 @@ CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.s"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c -o CMakeFiles\H7Test.elf.dir\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c.s
 
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/croutine.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\croutine.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\croutine.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\croutine.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\croutine.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/list.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\list.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\list.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\list.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\list.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/queue.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\queue.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\queue.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\queue.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\queue.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\tasks.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\tasks.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\tasks.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\tasks.c.s
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/timers.c
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj -MF CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.obj.d -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.obj -c C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\timers.c
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\timers.c > CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.i
+
+CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\timers.c -o CMakeFiles\H7Test.elf.dir\Middlewares\Third_Party\FreeRTOS\Source\timers.c.s
+
 CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/BoardCommuni_Task.c
 CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\BoardCommuni_Task.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\BoardCommuni_Task.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\BoardCommuni_Task.c
 
 CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.i: cmake_force
@@ -784,7 +924,7 @@ CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/Detect_Task.c
 CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\Detect_Task.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\Detect_Task.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\Detect_Task.c
 
 CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.i: cmake_force
@@ -798,7 +938,7 @@ CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/Gimbal_Fsm.c
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\Gimbal_Fsm.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\Gimbal_Fsm.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\Gimbal_Fsm.c
 
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.i: cmake_force
@@ -812,7 +952,7 @@ CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/Gimbal_Task.c
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\Gimbal_Task.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\Gimbal_Task.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\Gimbal_Task.c
 
 CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.i: cmake_force
@@ -826,7 +966,7 @@ CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/Remote_Task.c
 CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\Remote_Task.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\Remote_Task.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\Remote_Task.c
 
 CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.i: cmake_force
@@ -840,7 +980,7 @@ CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.s: cmake_force
 CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
 CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/fsm.c
 CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\fsm.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\fsm.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\fsm.c
 
 CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.i: cmake_force
@@ -851,19 +991,19 @@ CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.s"
 	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Task\Src\fsm.c -o CMakeFiles\H7Test.elf.dir\Task\Src\fsm.c.s
 
-CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
-CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj: C:/Users/16771/Desktop/H7Test/Task/Src/imu_task.c
-CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj"
-	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj -MF CMakeFiles\H7Test.elf.dir\Task\Src\imu_task.c.obj.d -o CMakeFiles\H7Test.elf.dir\Task\Src\imu_task.c.obj -c C:\Users\16771\Desktop\H7Test\Task\Src\imu_task.c
+CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj: CMakeFiles/H7Test.elf.dir/flags.make
+CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj: C:/Users/16771/Desktop/H7Test/platform/GCC/ARM_CM4F/port.c
+CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj: CMakeFiles/H7Test.elf.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj -MF CMakeFiles\H7Test.elf.dir\platform\GCC\ARM_CM4F\port.c.obj.d -o CMakeFiles\H7Test.elf.dir\platform\GCC\ARM_CM4F\port.c.obj -c C:\Users\16771\Desktop\H7Test\platform\GCC\ARM_CM4F\port.c
 
-CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.i"
-	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\Task\Src\imu_task.c > CMakeFiles\H7Test.elf.dir\Task\Src\imu_task.c.i
+CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.i"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\16771\Desktop\H7Test\platform\GCC\ARM_CM4F\port.c > CMakeFiles\H7Test.elf.dir\platform\GCC\ARM_CM4F\port.c.i
 
-CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.s"
-	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\Task\Src\imu_task.c -o CMakeFiles\H7Test.elf.dir\Task\Src\imu_task.c.s
+CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.s"
+	C:\armgcc\bin\arm-none-eabi-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\16771\Desktop\H7Test\platform\GCC\ARM_CM4F\port.c -o CMakeFiles\H7Test.elf.dir\platform\GCC\ARM_CM4F\port.c.s
 
 # Object files for target H7Test.elf
 H7Test_elf_OBJECTS = \
@@ -881,10 +1021,10 @@ H7Test_elf_OBJECTS = \
 "CMakeFiles/H7Test.elf.dir/Control/Src/GimbalMotor.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Control/Src/RemoteDeal.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Control/Src/SYSInit.c.obj" \
-"CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Core/Src/gpio.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Core/Src/main.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj" \
@@ -917,13 +1057,23 @@ H7Test_elf_OBJECTS = \
 "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj" \
+"CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj" \
 "CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj" \
-"CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj"
+"CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj"
 
 # External object files for target H7Test.elf
 H7Test_elf_EXTERNAL_OBJECTS =
@@ -942,10 +1092,10 @@ H7Test.elf: CMakeFiles/H7Test.elf.dir/Control/Src/BoardCommuni.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Control/Src/GimbalMotor.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Control/Src/RemoteDeal.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Control/Src/SYSInit.c.obj
-H7Test.elf: CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Core/Src/gpio.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Core/Src/main.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj
@@ -978,16 +1128,27 @@ H7Test.elf: CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj
-H7Test.elf: CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj
+H7Test.elf: CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj
 H7Test.elf: CMakeFiles/H7Test.elf.dir/build.make
+H7Test.elf: CMakeFiles/H7Test.elf.dir/objects1
 H7Test.elf: CMakeFiles/H7Test.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Linking C executable H7Test.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\16771\Desktop\H7Test\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Linking C executable H7Test.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\H7Test.elf.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building C:/Users/16771/Desktop/H7Test/cmake-build-debug/H7Test.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building C:/Users/16771/Desktop/H7Test/cmake-build-debug/H7Test.bin"

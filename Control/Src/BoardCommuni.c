@@ -28,8 +28,9 @@
 #include "bsp_can.h"
 #include "bsp_dr16.h"
 #include "fifo.h"
-#include "stm32f4xx_hal_dma.h"
+
 extern Gimbal_t Gimbal;
+
 //底盘测试模式
 #define Chassis_TEST_MODE 0
 
@@ -130,9 +131,13 @@ void CAN_A2B_RC_Send(void)
     RC_Data1[5] = (uint8_t)Gimbal.RC->RC_ctrl->rc.ch[2] ;
     RC_Data1[6] = Gimbal.RC->RC_ctrl->rc.ch[3] >> 8;
     RC_Data1[7] = (uint8_t)Gimbal.RC->RC_ctrl->rc.ch[3] ;
+#ifdef configUSE_H7
+    ECF_CAN_Send_Msg_FIFO(Gimbal.fdcan2Handle,0x100, RC_Data1, 8);
+#endif
 
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
     ECF_CAN_Send_Msg_FIFO(&hcan2,0x100, RC_Data1, 8);
-	
+#endif
     vTaskDelay(2);
 	
     RC_Data2[0] = Gimbal.RC->RC_ctrl->rc.ch[4] >> 8;
@@ -144,7 +149,14 @@ void CAN_A2B_RC_Send(void)
     RC_Data2[6]=0;
     RC_Data2[7]=0;
 
+#ifdef configUSE_H7
+    ECF_CAN_Send_Msg_FIFO(Gimbal.fdcan2Handle,0x100, RC_Data1, 8);
+#endif
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
     ECF_CAN_Send_Msg_FIFO(&hcan2,0x102, RC_Data2, 8);
+#endif
+
 }
 
 void CAN_A2B_KM_Send(void)

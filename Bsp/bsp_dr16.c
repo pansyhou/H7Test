@@ -2,21 +2,27 @@
 // Created by 16771 on 2023/5/13.
 //
 #include "bsp_dr16.h"
-
+#include "SYSInit.h"
 #define Sbus_RX_Buffer_Num 36
 #define RC_FRAME_LENGTH 18
 #define RC_CHANNAL_ERROR_VALUE 700  //遥控出错上限
 uint8_t Sbus_RX_Buffer[Sbus_RX_Buffer_Num];
 
 // 遥控器数据结构体变量
- RC_ctrl_t rc_ctl;
+RC_ctrl_t rc_ctl;
+int ch1;int ch2;
+uint8_t s1;uint8_t s2;
 
+RC_ctrl_t *RC_Get_RC_Pointer(void){
+	return &rc_ctl;
+}
 void RC_Init(){
     //使能DMA串口接收
     SET_BIT(huart1.Instance->CR3, USART_CR3_DMAR);
     __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);//开启IDLE中断
     __HAL_DMA_DISABLE(huart1.hdmarx);
     __HAL_DMA_ENABLE(huart1.hdmarx);
+//    huart1.hdmarx->Instance->NDTR
     HAL_UART_Receive_DMA(&huart1,Sbus_RX_Buffer,Sbus_RX_Buffer_Num);//开启DMA接收
 //    HAL_UART_Receive_IT(&huart1, Sbus_RX_Buffer, Sbus_RX_Buffer_Num);
 
@@ -53,8 +59,10 @@ void  RC_UART_Handler(){
     RC_DataProcess(Sbus_RX_Buffer, &rc_ctl);
 }
 
-int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {
 
+int32_t lasttick;
+int32_t deltaT;
+int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {
     RC_CTRL->rc.ch[0] = ((int16_t)pData[0] | ((int16_t)pData[1] << 8)) & 0x07FF;        //!< Channel 0
     RC_CTRL->rc.ch[1] = (((int16_t)pData[1] >> 3) | ((int16_t)pData[2] << 5)) & 0x07FF; //!< Channel 1
     RC_CTRL->rc.ch[2] = (((int16_t)pData[2] >> 6) | ((int16_t)pData[3] << 2) |          //!< Channel 2
@@ -80,6 +88,12 @@ int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {
     RC_CTRL->rc.ch[2] -= RC_CH_VALUE_OFFSET;
     RC_CTRL->rc.ch[3] -= RC_CH_VALUE_OFFSET;
     RC_CTRL->rc.ch[4] -= RC_CH_VALUE_OFFSET;
+	
+    ch1=RC_CTRL->rc.ch[0];
+    ch2=RC_CTRL->rc.ch[1];
+    s1=RC_CTRL->rc.s1;
+    s2=RC_CTRL->rc.s2;
+
 
     return 0;
 }

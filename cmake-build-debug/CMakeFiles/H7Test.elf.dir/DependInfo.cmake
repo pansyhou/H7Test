@@ -14,9 +14,13 @@ set(CMAKE_ASM_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
+  "ARM_MATH_CM7"
+  "ARM_MATH_MATRIX_CHECK"
+  "ARM_MATH_ROUNDING"
   "DEBUG"
   "STM32H750xx"
   "USE_HAL_DRIVER"
+  "__FPU_PRESENT=1"
   )
 
 # The include file search paths:
@@ -26,11 +30,16 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "C:/Users/16771/Desktop/H7Test/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
   "C:/Users/16771/Desktop/H7Test/Drivers/CMSIS/Device/ST/STM32H7xx/Include"
   "C:/Users/16771/Desktop/H7Test/Drivers/CMSIS/Include"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/include"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/ST/ARM/DSP/Inc"
   "C:/Users/16771/Desktop/H7Test/Bsp"
   "C:/Users/16771/Desktop/H7Test/platform"
   "C:/Users/16771/Desktop/H7Test/Algorithm/inc"
   "C:/Users/16771/Desktop/H7Test/Control/Inc"
   "C:/Users/16771/Desktop/H7Test/Task/Inc"
+  "C:/Users/16771/Desktop/H7Test/DSP/Include"
   )
 
 # The set of dependency files which are needed:
@@ -49,10 +58,10 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/16771/Desktop/H7Test/Control/Src/GimbalMotor.c" "CMakeFiles/H7Test.elf.dir/Control/Src/GimbalMotor.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Control/Src/GimbalMotor.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Control/Src/RemoteDeal.c" "CMakeFiles/H7Test.elf.dir/Control/Src/RemoteDeal.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Control/Src/RemoteDeal.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Control/Src/SYSInit.c" "CMakeFiles/H7Test.elf.dir/Control/Src/SYSInit.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Control/Src/SYSInit.c.obj.d"
-  "C:/Users/16771/Desktop/H7Test/Control/Src/referee.c" "CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Control/Src/referee.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Control/Src/rmmotor.c" "CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Control/Src/rmmotor.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Core/Src/dma.c" "CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Core/Src/dma.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Core/Src/fdcan.c" "CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Core/Src/fdcan.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Core/Src/freertos.c" "CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Core/Src/freertos.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Core/Src/gpio.c" "CMakeFiles/H7Test.elf.dir/Core/Src/gpio.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Core/Src/gpio.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Core/Src/main.c" "CMakeFiles/H7Test.elf.dir/Core/Src/main.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Core/Src/main.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Core/Src/stm32h7xx_hal_msp.c" "CMakeFiles/H7Test.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Core/Src/stm32h7xx_hal_msp.c.obj.d"
@@ -84,13 +93,23 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/16771/Desktop/H7Test/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c" "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c" "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c" "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/croutine.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/croutine.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/event_groups.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/list.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/list.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/queue.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/queue.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/tasks.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/tasks.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/Middlewares/Third_Party/FreeRTOS/Source/timers.c" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Middlewares/Third_Party/FreeRTOS/Source/timers.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Task/Src/BoardCommuni_Task.c" "CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/BoardCommuni_Task.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Task/Src/Detect_Task.c" "CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/Detect_Task.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Task/Src/Gimbal_Fsm.c" "CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Fsm.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Task/Src/Gimbal_Task.c" "CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/Gimbal_Task.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Task/Src/Remote_Task.c" "CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/Remote_Task.c.obj.d"
   "C:/Users/16771/Desktop/H7Test/Task/Src/fsm.c" "CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/fsm.c.obj.d"
-  "C:/Users/16771/Desktop/H7Test/Task/Src/imu_task.c" "CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/Task/Src/imu_task.c.obj.d"
+  "C:/Users/16771/Desktop/H7Test/platform/GCC/ARM_CM4F/port.c" "CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj" "gcc" "CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj.d"
   )
 
 # Targets to which this target links.

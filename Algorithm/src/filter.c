@@ -224,7 +224,7 @@ void sliding_mean_filter_init(sliding_mean_filter_type_t *mean_filter)
  *传入：1.滤波对象结构体  2.更新值 3.均值数量
  *传出：滑动滤波输出值（250次）
  */
-float sliding_mean_filter(sliding_mean_filter_type_t *mean_filter, float Input, int num)
+float sliding_mean_filter(sliding_mean_filter_type_t *mean_filter, fp32 Input, int32_t num)
 {
   //更新
   mean_filter->Input = Input;

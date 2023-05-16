@@ -1,8 +1,19 @@
 #ifndef __BOARDCOMMUNI_H_
 #define __BOARDCOMMUNI_H_
+
+#include "BoardConfig.h"
+#ifdef configUSE_H7
+
+#endif
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 #include "stm32f4xx.h"
-#include "RemoteDeal.h"
 #include "stm32f4xx_hal.h"
+#endif
+
+#include "RemoteDeal.h"
+
+
 #include "stdio.h"
 #include "usart.h"
 

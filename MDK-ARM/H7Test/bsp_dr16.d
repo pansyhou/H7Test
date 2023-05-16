@@ -36,4 +36,29 @@ h7test/bsp_dr16.o: ..\Bsp\bsp_dr16.c ..\Bsp\bsp_dr16.h ..\Core\Inc\main.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
-  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
+  ..\platform\BoardConfig.h ..\Algorithm\inc\struct_typedef.h \
+  ..\Control\Inc\SYSInit.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\freertos.h \
+  ..\Core\Inc\FreeRTOSConfig.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
+  ..\platform\GCC\ARM_CM4F\portmacro.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
+  ..\Core\Inc\fdcan.h ..\Core\Inc\dma.h ..\Core\Inc\usart.h \
+  ..\Core\Inc\gpio.h ..\Control\Inc\RemoteDeal.h \
+  ..\Algorithm\inc\filter.h ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
+  ..\Task\Inc\Detect_Task.h ..\Core\Inc\tim.h ..\Algorithm\inc\pid.h \
+  ..\Control\Inc\rmmotor.h ..\Bsp\bsp_Motor_Encoder.h \
+  ..\Algorithm\inc\maths.h ..\Bsp\bsp_can.h

@@ -10,7 +10,14 @@
 #include "bsp_dr16.h"
 #include "filter.h"
 #include <Detect_Task.h>
+#include "BoardConfig.h"
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
+#include "stm32f4xx_hal_def.h"
+#endif
 
+#if defined (configUSE_H7 )
+#include "stm32h7xx_hal_def.h"
+#endif
 /* ----------------------- PC Key Definition-------------------------------- */
 
 typedef enum {
@@ -21,7 +28,7 @@ typedef enum {
 
 
 /****************键盘控制状态结构体**************************/
-typedef __packed struct
+typedef  struct
 {
 //	unsigned char Electromagnet : 1; //电磁铁
 //	unsigned char Magazine : 1;		 //弹仓
@@ -61,7 +68,7 @@ typedef __packed struct
 } KeyBoard_State_t;
 
 /*Remote结构体*/
-typedef __packed struct
+typedef  struct
 {
     RC_ctrl_t *RC_ctrl;
 	first_order_filter_type_t RC_X;

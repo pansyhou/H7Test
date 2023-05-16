@@ -15,7 +15,7 @@
 #define max(x, y) ((x) > (y) ? (x) : (y))
 
 //运动加速度限制斜坡函数
-typedef __packed struct
+typedef  struct
 {
     float Input;      //当前取样值
     float Last_Input; //上次取样值

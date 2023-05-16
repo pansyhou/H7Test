@@ -3,15 +3,15 @@
 
 # compile ASM with C:/armgcc/bin/arm-none-eabi-gcc.exe
 # compile C with C:/armgcc/bin/arm-none-eabi-gcc.exe
-ASM_DEFINES = -DDEBUG -DSTM32H750xx -DUSE_HAL_DRIVER
+ASM_DEFINES = -DARM_MATH_CM7 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32H750xx -DUSE_HAL_DRIVER -D__FPU_PRESENT=1
 
-ASM_INCLUDES = -IC:\Users\16771\Desktop\H7Test\Core\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Device\ST\STM32H7xx\Include -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Include -IC:\Users\16771\Desktop\H7Test\Bsp -IC:\Users\16771\Desktop\H7Test\platform -IC:\Users\16771\Desktop\H7Test\Algorithm\inc -IC:\Users\16771\Desktop\H7Test\Control\Inc -IC:\Users\16771\Desktop\H7Test\Task\Inc
+ASM_INCLUDES = -IC:\Users\16771\Desktop\H7Test\Core\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Device\ST\STM32H7xx\Include -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Include -IC:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\include -IC:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -IC:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F -IC:\Users\16771\Desktop\H7Test\Middlewares\ST\ARM\DSP\Inc -IC:\Users\16771\Desktop\H7Test\Bsp -IC:\Users\16771\Desktop\H7Test\platform -IC:\Users\16771\Desktop\H7Test\Algorithm\inc -IC:\Users\16771\Desktop\H7Test\Control\Inc -IC:\Users\16771\Desktop\H7Test\Task\Inc -IC:\Users\16771\Desktop\H7Test\DSP\Include
 
-ASM_FLAGS = -g -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -x assembler-with-cpp -Og -g
+ASM_FLAGS = -g -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -x assembler-with-cpp -Og -g
 
-C_DEFINES = -DDEBUG -DSTM32H750xx -DUSE_HAL_DRIVER
+C_DEFINES = -DARM_MATH_CM7 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DDEBUG -DSTM32H750xx -DUSE_HAL_DRIVER -D__FPU_PRESENT=1
 
-C_INCLUDES = -IC:\Users\16771\Desktop\H7Test\Core\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Device\ST\STM32H7xx\Include -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Include -IC:\Users\16771\Desktop\H7Test\Bsp -IC:\Users\16771\Desktop\H7Test\platform -IC:\Users\16771\Desktop\H7Test\Algorithm\inc -IC:\Users\16771\Desktop\H7Test\Control\Inc -IC:\Users\16771\Desktop\H7Test\Task\Inc
+C_INCLUDES = -IC:\Users\16771\Desktop\H7Test\Core\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc -IC:\Users\16771\Desktop\H7Test\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Device\ST\STM32H7xx\Include -IC:\Users\16771\Desktop\H7Test\Drivers\CMSIS\Include -IC:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\include -IC:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS -IC:\Users\16771\Desktop\H7Test\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F -IC:\Users\16771\Desktop\H7Test\Middlewares\ST\ARM\DSP\Inc -IC:\Users\16771\Desktop\H7Test\Bsp -IC:\Users\16771\Desktop\H7Test\platform -IC:\Users\16771\Desktop\H7Test\Algorithm\inc -IC:\Users\16771\Desktop\H7Test\Control\Inc -IC:\Users\16771\Desktop\H7Test\Task\Inc -IC:\Users\16771\Desktop\H7Test\DSP\Include
 
-C_FLAGS = -g -fdiagnostics-color=always -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g -std=gnu11
+C_FLAGS = -g -fdiagnostics-color=always -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mcpu=cortex-m7 -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -Og -g -std=gnu11
 

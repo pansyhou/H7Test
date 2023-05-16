@@ -8,7 +8,7 @@
 #include "fdcan.h"
 #endif
 
-#ifdef configUSE_C_Board|configUSE_F4
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
 #include "can.h"
 #endif
 
@@ -44,7 +44,7 @@ typedef enum {
 } Briter_Encoder_Code_e;
 
 /*CAN数据处理-码盘处理*/
-typedef __packed struct {
+typedef  struct {
     int32_t Encode_Record_Val;//累积码盘值(在小圈内)
     int32_t Encode_Actual_Val;//真实码盘值(一大圈)
 

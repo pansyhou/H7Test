@@ -32,7 +32,7 @@ typedef enum SpeedCurve {
 }SpeedCurveType;
 
 /*电机结构体*/
-typedef __packed struct
+typedef  struct
 {
 	uint8_t Pos_Lock;			//位置锁
 	int32_t ExpSpeed;			//期望速度
