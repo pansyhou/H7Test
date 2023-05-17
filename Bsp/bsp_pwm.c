@@ -10,7 +10,6 @@
 //脉冲宽度范围 500-2500us
 //
 
-extern TIM_HandleTypeDef htim1;
 
 
 /**
@@ -20,7 +19,7 @@ extern TIM_HandleTypeDef htim1;
  * @param Output_Percent 输出百分比 0-100
  */
 
-void ECF_PWM_50HZ_Output_Init(TIM_HandleTypeDef *htim, int8_t TIM_Channel , int32_t cmp){
+void ECF_PWM_50HZ_Output_Init(TIM_HandleTypeDef *htim, int TIM_Channel , int32_t cmp){
     //合法性检查
     assert_param(IS_TIM_INSTANCE(htim->Instance));
     assert_param(IS_TIM_CCX_INSTANCE(htim, TIM_Channel));
@@ -30,7 +29,7 @@ void ECF_PWM_50HZ_Output_Init(TIM_HandleTypeDef *htim, int8_t TIM_Channel , int3
 }
 
 
-void ECF_PWM_50HZ_Output(TIM_HandleTypeDef *htim, int8_t TIM_Channel, const float Output_Percent) {
+void ECF_PWM_50HZ_Output(TIM_HandleTypeDef *htim, int TIM_Channel, const float Output_Percent) {
     //合法性检查
     assert_param(IS_TIM_INSTANCE(htim->Instance));
     assert_param(IS_TIM_CCX_INSTANCE(htim, TIM_Channel));
@@ -70,7 +69,7 @@ void ECF_PWM_50HZ_Output(TIM_HandleTypeDef *htim, int8_t TIM_Channel, const floa
  * @param TIM_Channel
  * @param pwm
  */
-void ECF_HobbyWing_ESC_Control(TIM_HandleTypeDef *htim, int8_t TIM_Channel,uint16_t pwm) {
+void ECF_HobbyWing_ESC_Control(TIM_HandleTypeDef *htim, int TIM_Channel,uint16_t pwm) {
     //别超油门了
     if (pwm >= 1400) pwm = 1300;
     else if(pwm <= 1190)  pwm=1140;

@@ -129,9 +129,14 @@ static void Key_Mouse_Deal(void)
     int16_t ws[2]={0,0};
     int16_t ad[2]={0,0};
 
+
     //整车状态切换
-    if (key & KEY_PRESSED_OFFSET_G) {
+    if (key & KEY_PRESSED_OFFSET_G && !(REMOTE.last_key & KEY_PRESSED_OFFSET_G)) {
         REMOTE.state.Global_Status = 1 - REMOTE.state.Global_Status;
+    }
+    //整车状态切换
+    if (key & KEY_PRESSED_OFFSET_B && !(REMOTE.last_key & KEY_PRESSED_OFFSET_B)) {
+        REMOTE.state.Reserve_Status = 1 - REMOTE.state.Reserve_Status;
     }
 
     /*************************************底盘前后*********************************/
@@ -363,7 +368,8 @@ static void Key_Mouse_Deal(void)
 //    First_Order(&REMOTE.KM_X, REMOTE.RC_ctrl->key.kv0); //底盘左右
 //    First_Order(&REMOTE.KM_Y, REMOTE.RC_ctrl->key.kv1); //底盘前后
     // First_Order(&REMOTE.KM_Z, REMOTE.RC_ctrl->mouse.x); //鼠标x轴
-
+    //更新上一次的key值
+    REMOTE.last_key = REMOTE.RC_ctrl->key.v;
 
 }
 

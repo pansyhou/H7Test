@@ -3437,7 +3437,7 @@ static portTASK_FUNCTION( prvIdleTask, pvParameters )
 			{
 				mtCOVERAGE_TEST_MARKER();
 			}
-		}
+		}	
 		#endif /* ( ( configUSE_PREEMPTION == 1 ) && ( configIDLE_SHOULD_YIELD == 1 ) ) */
 
 		#if ( configUSE_IDLE_HOOK == 1 )
@@ -3445,7 +3445,7 @@ static portTASK_FUNCTION( prvIdleTask, pvParameters )
 			extern void vApplicationIdleHook( void );
 
 			/* Call the user defined function from within the idle task.  This
-			allows the application designer to add background functionality
+			allows the application designer to add backgro	und functionality
 			without the overhead of a separate task.
 			NOTE: vApplicationIdleHook() MUST NOT, UNDER ANY CIRCUMSTANCES,
 			CALL A FUNCTION THAT MIGHT BLOCK. */

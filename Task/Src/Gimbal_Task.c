@@ -31,7 +31,7 @@ static void Gimbal_Init(void)
     //    Chassis.Fsm_Init();                 //×´Ì¬»ú³õÊ¼»¯
 }
 
-volatile int32_t  left=0,right=0;
+
 /***
  *                    _ooOoo_
  *                   o8888888o
@@ -58,7 +58,7 @@ volatile int32_t  left=0,right=0;
 void Gimbal_Task(void *pvParameters)
 {
     Gimbal_Init();
-    vTaskDelay(500);
+    vTaskDelay(100);
     while(1)
     {
         FSM_Deal(Gimbal.Gimbal_Fsm,Gimbal.RC->RC_ctrl->rc.s1,Gimbal.RC->RC_ctrl->rc.s2);

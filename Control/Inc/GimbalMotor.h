@@ -82,6 +82,16 @@
 #define LastJoint_2006_Ppid_D 1.0f
 
 
+#define Reserve_Spid_P 1.0f
+#define Reserve_Spid_I 0.0f
+#define Reserve_Spid_D 0.0f
+
+#define Reserve_Ppid_P 1.0f
+#define Reserve_Ppid_I 0.0f
+#define Reserve_Ppid_D 0.0f
+
+
+
 typedef  struct
 {
     Motor_t Lift_Motor[2];
@@ -95,7 +105,7 @@ typedef  struct
 typedef  struct
 {
     Motor_t Pitch_Motor;//pitch轴/x轴3508电机
-    int32_t SecondPitch_Pwm_Cmp;//范围500-2500
+    Servo_t Second_Pitch;//范围500-2500
     Motor_t Roll_Motor; //roll轴 /z轴3508电机
     Motor_t Yaw_Motor;  //yaw轴/y轴3508电机
     Motor_t Forward_Motor;    //前伸电机 3508电机
@@ -122,7 +132,9 @@ typedef  struct
 {
     Lift_UP_t *Lift_t;  //抬升结构体
     Three_D_Arm_t *TD_t;//机械臂结构体
-    Clip_Module_t *C_t;
+    Motor_t Reserve_Motor;//储矿电机
+    int32_t Reserve_LockPos;
+//    Clip_Module_t *C_t;
 } Grasp_t; //云台上全部夹爪结构体
 
 Grasp_t* Return_Grasp_t_Pointer(void);
@@ -132,6 +144,7 @@ void Gimbal_PowerOff_Drive(Grasp_t *G);
 void Arms_Drive(Three_D_Arm_t *Arm_t,  int16_t roll, int16_t pitch, int16_t yaw,int16_t joint ,int16_t  forward, bool_t update_sucker_state) ;
 void Three_Degrees_Arms_Init(void);
 void MotorVelocityCurve(Motor_t *curve);
+void Reserve_Drive();
 static void CalCurveSPTA(Motor_t *spta);
 #endif // !__GIMBAL_MOTOR_H
 

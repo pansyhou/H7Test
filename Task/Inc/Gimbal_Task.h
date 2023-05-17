@@ -22,6 +22,9 @@ typedef  struct
 
 static void Gimbal_Init(void);
 
+extern Gimbal_t Gimbal;
+
+
 void Gimbal_Task(void *pvParameters);
 #endif // !__GIMBAL_TASK_H
 

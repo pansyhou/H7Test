@@ -17,6 +17,9 @@
 #define Pitch_Servo_LOWER_ANGLE 18.1948891f
 #define Pitch_Servo__ANGLE 36.389618fe
 
+#define Reserve_Motor_Output_Limit 3000
+
+
 /*  系统头文件 */
 #include <stdlib.h>
 #include <stdio.h>
@@ -38,7 +41,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 
-#ifdef configUSE_H7
+#if  defined (configUSE_H7)
 #include "fdcan.h"
 
 #endif

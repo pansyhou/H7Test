@@ -22,7 +22,8 @@ static void detect_init(uint32_t time)
     //设置各设备离线时间，上线稳定工作时间，优先级 offlineTime onlinetime priority
     uint16_t set_item[ERROR_LIST_LENGHT][3] =
             {
-                    {30, 40, 15},   //DBUS
+            //          offline online priority
+                    {800, 100, 15},   //DBUS
                     {10, 10, 9},   //Yaw
                     {10, 10, 10},   //Roll
                     {10, 10, 11},    //Pitch

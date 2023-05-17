@@ -4,7 +4,7 @@
 
 #include "struct_typedef.h"
 
-#define DETECT_TASK_INIT_TIME 57
+#define DETECT_TASK_INIT_TIME 80
 #define DETECT_CONTROL_TIME 10
 
 

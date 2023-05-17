@@ -59,6 +59,17 @@ typedef  struct
 //    float flexible;     //S曲线拉伸度
 }Motor_t;
 
+typedef  struct{
+    TIM_HandleTypeDef *sTIM_Handle;
+    char sTIM_Channel;
+    int Compare;
+}Servo_t;
+
+
+
+
+
+
 /**************函数声明**************/
 float Motor_Torque_Deal(Motor_t *motor);
 void MotorValZero(Motor_t *motor);

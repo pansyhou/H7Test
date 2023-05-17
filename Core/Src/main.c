@@ -27,11 +27,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "bsp_dr16.h"
-#include "bsp_can.h"
-#include "bsp_pwm.h"
-#include "bsp_Motor_Encoder.h"
-#include "arm_math.h"
+#include "SYSInit.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -103,17 +100,7 @@ int main(void)
   MX_TIM3_Init();
   MX_FDCAN2_Init();
   /* USER CODE BEGIN 2 */
-RC_Init();
-ECF_CAN_Init();
-    ECF_PWM_50HZ_Output_Init(&htim1, TIM_CHANNEL_1, pwm);
-		ECF_PWM_50HZ_Output_Init(&htim1, TIM_CHANNEL_2, pwm);
-		ECF_PWM_50HZ_Output_Init(&htim8, TIM_CHANNEL_3, pwm);
-		ECF_PWM_50HZ_Output_Init(&htim8, TIM_CHANNEL_4, pwm);
-		ECF_PWM_50HZ_Output_Init(&htim3, TIM_CHANNEL_2, pwm);
-//	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
-//	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_2);
-//	HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_3);
-//	HAL_TIM_PWM_Start(&htim8,TIM_CHANNEL_4);
+	Sys_Init();
 		HAL_Delay(20);
   /* USER CODE END 2 */
 

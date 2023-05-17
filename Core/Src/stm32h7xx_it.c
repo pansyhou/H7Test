@@ -213,13 +213,13 @@ void USART1_IRQHandler(void)
   /* USER CODE BEGIN USART1_IRQn 0 */
 	
 	__HAL_UART_CLEAR_IT(&huart1, UART_CLEAR_IDLEF);
-	    __HAL_DMA_DISABLE(huart1.hdmarx);
-    
-		RC_UART_Handler();
+    __HAL_DMA_DISABLE(huart1.hdmarx);
+    RC_UART_Handler();
   /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&huart1);
+	
+    HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
-__HAL_DMA_ENABLE(huart1.hdmarx);
+    __HAL_DMA_ENABLE(huart1.hdmarx);
   /* USER CODE END USART1_IRQn 1 */
 }
 

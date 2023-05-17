@@ -15,6 +15,8 @@
 #include "stm32f4xx_hal_def.h"
 #endif
 
+
+
 #if defined (configUSE_H7 )
 #include "stm32h7xx_hal_def.h"
 #endif
@@ -25,6 +27,12 @@ typedef enum {
     Arm_Independent = 1,
     Global_Status_End
 } Global_Status_e;
+
+typedef enum {
+    Reserve_Close = 0,
+    Reserve_Open = 1,
+    Reserve_Status_End
+} Reserve_Status_e;
 
 
 /****************键盘控制状态结构体**************************/
@@ -62,8 +70,7 @@ typedef  struct
     // global status
     unsigned char Global_Status : 1 ; //0时为底盘独立模式，1为取矿独立模式
 
-    //
-
+    unsigned char Reserve_Status: 1;  //0为关,1为开
 
 } KeyBoard_State_t;
 
@@ -71,6 +78,7 @@ typedef  struct
 typedef  struct
 {
     RC_ctrl_t *RC_ctrl;
+    uint16_t last_key;
 	first_order_filter_type_t RC_X;
     first_order_filter_type_t RC_Y;
     first_order_filter_type_t RC_Z;
@@ -88,5 +96,7 @@ void Remote_Data_Deal(void);
 
 /*返回Remote数据指针*/
 REMOTE_t *Return_RemoteDeal_Point(void);
+
+extern REMOTE_t REMOTE;
 
 #endif

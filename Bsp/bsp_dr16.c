@@ -3,6 +3,7 @@
 //
 #include "bsp_dr16.h"
 #include "SYSInit.h"
+#include "Detect_Task.h"
 #define Sbus_RX_Buffer_Num 36
 #define RC_FRAME_LENGTH 18
 #define RC_CHANNAL_ERROR_VALUE 700  //рё©ьЁЖ╢Миооч
@@ -57,11 +58,9 @@ void RC_Init(){
 
 void  RC_UART_Handler(){
     RC_DataProcess(Sbus_RX_Buffer, &rc_ctl);
+    detect_hook(DBUS_TOE);
 }
 
-
-int32_t lasttick;
-int32_t deltaT;
 int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {
     RC_CTRL->rc.ch[0] = ((int16_t)pData[0] | ((int16_t)pData[1] << 8)) & 0x07FF;        //!< Channel 0
     RC_CTRL->rc.ch[1] = (((int16_t)pData[1] >> 3) | ((int16_t)pData[2] << 5)) & 0x07FF; //!< Channel 1

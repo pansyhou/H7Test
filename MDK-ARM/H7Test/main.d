@@ -53,7 +53,12 @@ h7test/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\Core\Inc\dma.h ..\Core\Inc\fdcan.h ..\Core\Inc\tim.h \
-  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\Bsp\bsp_dr16.h \
-  ..\Algorithm\inc\struct_typedef.h ..\Bsp\bsp_can.h ..\Bsp\bsp_pwm.h \
-  ..\Bsp\bsp_Motor_Encoder.h ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h
+  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\Control\Inc\SYSInit.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Control\Inc\RemoteDeal.h ..\Bsp\bsp_dr16.h \
+  ..\Algorithm\inc\struct_typedef.h ..\Algorithm\inc\filter.h \
+  ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h ..\Task\Inc\Detect_Task.h \
+  ..\Algorithm\inc\pid.h ..\Control\Inc\rmmotor.h \
+  ..\Bsp\bsp_Motor_Encoder.h ..\Algorithm\inc\maths.h ..\Bsp\bsp_can.h

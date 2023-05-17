@@ -46,7 +46,7 @@ extern UART_HandleTypeDef huart1;
 /*
 * 遥控器接收数据结构体*/
 //__packed为字节对齐
-typedef __packed struct{
+typedef  struct{
     struct{
         int32_t ch[5];
         uint8_t s1;
