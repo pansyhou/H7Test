@@ -46,16 +46,16 @@ extern UART_HandleTypeDef huart1;
 /*
 * 遥控器接收数据结构体*/
 //__packed为字节对齐
-typedef  struct{
+typedef __packed struct{
     struct{
-        int32_t ch[5];
+        int16_t ch[5];
         uint8_t s1;
         uint8_t s2;
     } rc;
     struct{
-        int32_t x;
-        int32_t y;
-        int32_t z;
+        int16_t x;
+        int16_t y;
+        int16_t z;
         uint8_t press_l;
         uint8_t press_r;
     } mouse;
@@ -63,8 +63,11 @@ typedef  struct{
     struct{
         int32_t kv0;
         int32_t kv1;
-        int32_t kv2;
-        int32_t kv3;
+        int32_t kqe;
+        int32_t kzx;
+        int32_t kcv;
+        int32_t kcs;
+//        int32_t kv6;
         uint16_t v;
     } key;
     int8_t Flag;

@@ -21,8 +21,9 @@ void RC_Init(){
     //使能DMA串口接收
     SET_BIT(huart1.Instance->CR3, USART_CR3_DMAR);
     __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);//开启IDLE中断
-    __HAL_DMA_DISABLE(huart1.hdmarx);
-    __HAL_DMA_ENABLE(huart1.hdmarx);
+		__HAL_UART_CLEAR_IT(&huart1, UART_CLEAR_IDLEF);//clear UART_CLEAR_IDLEF flag
+//    __HAL_DMA_DISABLE(huart1.hdmarx);
+//    __HAL_DMA_ENABLE(huart1.hdmarx);
 //    huart1.hdmarx->Instance->NDTR
     HAL_UART_Receive_DMA(&huart1,Sbus_RX_Buffer,Sbus_RX_Buffer_Num);//开启DMA接收
 //    HAL_UART_Receive_IT(&huart1, Sbus_RX_Buffer, Sbus_RX_Buffer_Num);
@@ -55,6 +56,17 @@ void RC_Init(){
 //    __HAL_DMA_ENABLE(huart->hdmarx);
 //}
 
+int16_t rc_deadline_limit(int16_t input, int16_t dealine)
+{
+    if (input > dealine || input < -dealine)
+    {
+        return input;
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 void  RC_UART_Handler(){
     RC_DataProcess(Sbus_RX_Buffer, &rc_ctl);
@@ -87,12 +99,13 @@ int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {
     RC_CTRL->rc.ch[2] -= RC_CH_VALUE_OFFSET;
     RC_CTRL->rc.ch[3] -= RC_CH_VALUE_OFFSET;
     RC_CTRL->rc.ch[4] -= RC_CH_VALUE_OFFSET;
-	
-    ch1=RC_CTRL->rc.ch[0];
-    ch2=RC_CTRL->rc.ch[1];
-    s1=RC_CTRL->rc.s1;
-    s2=RC_CTRL->rc.s2;
 
+    RC_CTRL->rc.ch[0] = rc_deadline_limit(RC_CTRL->rc.ch[0], 4); //死区限制
+    RC_CTRL->rc.ch[1] = rc_deadline_limit(RC_CTRL->rc.ch[1], 4); //死区限制
+    RC_CTRL->rc.ch[2] = rc_deadline_limit(RC_CTRL->rc.ch[2], 4); //死区限制
+    RC_CTRL->rc.ch[3] = rc_deadline_limit(RC_CTRL->rc.ch[3], 4); //死区限制
+    RC_CTRL->rc.ch[4] = rc_deadline_limit(RC_CTRL->rc.ch[3], 4); //死区限制
+																														 
 
     return 0;
 }

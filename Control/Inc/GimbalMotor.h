@@ -47,6 +47,15 @@
 #define Pitch_3508_Ppid_I 0.0f
 #define Pitch_3508_Ppid_D 0.5f
 
+
+#define Pitch_3508_Spid_P_UP 10.0f
+#define Pitch_3508_Spid_I_UP 0.0f
+#define Pitch_3508_Spid_D_UP 1.0f
+
+#define Pitch_3508_Ppid_P_UP 1.0f
+#define Pitch_3508_Ppid_I_UP 0.0f
+#define Pitch_3508_Ppid_D_UP 0.5f
+
 #define Roll_Spid_P 3.0f
 #define Roll_Spid_I 0.00f
 #define Roll_Spid_D 0.0f

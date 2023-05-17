@@ -35,6 +35,13 @@ typedef enum {
 } Reserve_Status_e;
 
 
+typedef enum {
+    Arm_Control_Classic = 0,
+    Arm_Control_Triangle,
+    Arm_Control_Coordinate,
+    Arm_Control_End
+} Arm_Control_e;
+
 /****************键盘控制状态结构体**************************/
 typedef  struct
 {
@@ -70,7 +77,9 @@ typedef  struct
     // global status
     unsigned char Global_Status : 1 ; //0时为底盘独立模式，1为取矿独立模式
 
-    unsigned char Reserve_Status: 1;  //0为关,1为开
+    unsigned char Reserve_Status: 1;  //储矿0为关,1为开
+
+    unsigned char Arm_Control_Method: 2;  //储矿0为关,1为开
 
 } KeyBoard_State_t;
 
@@ -85,6 +94,11 @@ typedef  struct
     first_order_filter_type_t KM_X;
     first_order_filter_type_t KM_Y;
     first_order_filter_type_t KM_Z;
+
+    first_order_filter_type_t KQE;
+    first_order_filter_type_t KZX;
+    first_order_filter_type_t KCV;
+    first_order_filter_type_t KCS;
 	KeyBoard_State_t state;
 } REMOTE_t;
 

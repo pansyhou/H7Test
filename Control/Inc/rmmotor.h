@@ -39,6 +39,8 @@ typedef  struct
 	float ExpRadian;			//期望角度
 	pid_parameter_t SPID;			//速度环PID
 	pid_parameter_t PPID;			//位置环PID
+    pid_parameter_t UP_SPID;			//速度环PID
+	pid_parameter_t UP_PPID;			//位置环PID
 	Encoder_t *Encoder;		//码盘
 	MotorType_e MotorType;//电机种类
 	int16_t temp;	//温度

@@ -71,6 +71,7 @@ static void Remote_Data_Zero(void)
     REMOTE.state.Global_Status = 0;
 }
 
+int rcy;
 /*************************************************************************************************
 *名称:	Remote_Data_Init
 *功能:	遥控数值处理初始化
@@ -80,6 +81,8 @@ static void Remote_Data_Zero(void)
 *************************************************************************************************/
 void Remote_Data_Init(void)
 {
+		/*获取遥控指针*/
+		REMOTE.RC_ctrl = RC_Get_RC_Pointer();
     /*遥控数值清零*/
     Remote_Data_Zero();
     REMOTE.RC_ctrl->rc.s1 = REMOTE.RC_ctrl->rc.s2 = 2; //此键位为断电键位
@@ -93,9 +96,14 @@ void Remote_Data_Init(void)
     first_order_filter_init(&REMOTE.KM_Y, 0.08);
     first_order_filter_init(&REMOTE.KM_Z, 0.08);
 
+    first_order_filter_init(&REMOTE.KQE, 0.08);
+    first_order_filter_init(&REMOTE.KZX, 0.08);
+    first_order_filter_init(&REMOTE.KCV, 0.08);
+    first_order_filter_init(&REMOTE.KCS, 0.08);
 
-    /*获取遥控指针*/
-    REMOTE.RC_ctrl = RC_Get_RC_Pointer();
+
+
+    
     //dma双缓冲遥控器协议接收初始化
     ECF_RC_Init();
 }
@@ -126,9 +134,12 @@ static void Key_Mouse_Deal(void)
 {
 
     uint16_t key =REMOTE.RC_ctrl->key.v;
-    int16_t ws[2]={0,0};
-    int16_t ad[2]={0,0};
-
+    int32_t ws[2] = {0, 0};
+    int32_t ad[2] = {0, 0};
+    int32_t zx[2] = {0, 0};
+    int32_t qe[2] = {0, 0};
+    int32_t cv[2] = {0, 0};
+    int32_t cs[2] = {0, 0};
 
     //整车状态切换
     if (key & KEY_PRESSED_OFFSET_G && !(REMOTE.last_key & KEY_PRESSED_OFFSET_G)) {
@@ -138,6 +149,12 @@ static void Key_Mouse_Deal(void)
     if (key & KEY_PRESSED_OFFSET_B && !(REMOTE.last_key & KEY_PRESSED_OFFSET_B)) {
         REMOTE.state.Reserve_Status = 1 - REMOTE.state.Reserve_Status;
     }
+ //整车状态切换
+    if (key & KEY_PRESSED_OFFSET_F && !(REMOTE.last_key & KEY_PRESSED_OFFSET_F)) {
+        REMOTE.state.Arm_Control_Method = 1 - REMOTE.state.Arm_Control_Method;
+    }
+
+
 
     /*************************************底盘前后*********************************/
     if (key & KEY_PRESSED_OFFSET_W)
@@ -231,8 +248,68 @@ static void Key_Mouse_Deal(void)
         }
 
     }
-    REMOTE.RC_ctrl->key.kv1=ad[0]+ad[1];
 
+    if (key & KEY_PRESSED_OFFSET_Q) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            qe[0]=-500;
+        }
+    }
+    if (key & KEY_PRESSED_OFFSET_E) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            qe[1]=500;
+        }
+    }
+    if (key & KEY_PRESSED_OFFSET_C) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            cv[0]=-500;
+        }
+    }
+    if (key & KEY_PRESSED_OFFSET_V) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            cv[1]=500;
+        }
+    }
+
+    if (key & KEY_PRESSED_OFFSET_Z) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            zx[0]=-500;
+        }
+    }
+    if (key & KEY_PRESSED_OFFSET_X) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            zx[1]=500;
+        }
+    }
+    if (key & KEY_PRESSED_OFFSET_CTRL) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            cs[0]=-500;
+        }
+    }
+    if (key & KEY_PRESSED_OFFSET_SHIFT) {
+        if (REMOTE.state.Global_Status == Arm_Independent){
+            cs[1]=500;
+        }
+    }
+
+
+
+    REMOTE.RC_ctrl->key.kv1 = ad[0] + ad[1];
+
+    REMOTE.RC_ctrl->key.kqe = qe[0] + qe[1];
+    REMOTE.RC_ctrl->key.kcv = cv[0] + cv[1];
+    REMOTE.RC_ctrl->key.kzx = zx[0] + zx[1];
+    REMOTE.RC_ctrl->key.kcs = cs[0] + cs[1];
+
+
+
+    first_order_filter(&REMOTE.KQE, REMOTE.RC_ctrl->key.kqe);
+    first_order_filter(&REMOTE.KCV, REMOTE.RC_ctrl->key.kcv);
+    first_order_filter(&REMOTE.KZX,REMOTE.RC_ctrl->key.kzx);
+    first_order_filter(&REMOTE.KCS,REMOTE.RC_ctrl->key.kcs);
+    first_order_filter(&REMOTE.KM_X, REMOTE.RC_ctrl->mouse.x);
+    first_order_filter(&REMOTE.KM_Y, REMOTE.RC_ctrl->mouse.y);
+
+		rcy=REMOTE.KM_Y.out;
     /*************************************鼠标X轴************************************/
     REMOTE.RC_ctrl->mouse.x *= 5.0f;
     /**************************************鼠标Y轴***********************************/
@@ -402,16 +479,17 @@ void Remote_Data_Deal(void)
 //    }
 
 //    _s1 = REMOTE.RC_ctrl->rc.s1;
-	if(REMOTE.RC_ctrl->rc.s1==1&&REMOTE.RC_ctrl->rc.s2==1)
-	{
-		Key_Mouse_Deal();
-        detect_hook(DBUS_TOE);//记录在线时间
-	}
-	else{
-		Rc_Deal();
-        detect_hook(DBUS_TOE);
-	}
+//	if(REMOTE.RC_ctrl->rc.s1==1&&REMOTE.RC_ctrl->rc.s2==1)
+//	{
+//		Key_Mouse_Deal();
+//        detect_hook(DBUS_TOE);//记录在线时间
+//	}
+//	else{
+//		Rc_Deal();
+//        detect_hook(DBUS_TOE);
+//	}
 		
-	
+	Key_Mouse_Deal();
+    detect_hook(DBUS_TOE);//记录在线时间
 }
 

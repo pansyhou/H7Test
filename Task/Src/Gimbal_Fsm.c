@@ -169,9 +169,16 @@ static void Arm_State(void)
     Gimbal_Fsm.Current_State->Behavior_Process=Arm_bhv;
 }
 
+
+
 static void Arm_bhv(void)
 {
-    Arms_Drive(Gimbal.Graps->TD_t,  Gimbal.RC->RC_ctrl->rc.ch[0], Gimbal.RC->RC_ctrl->rc.ch[4]*3, -Gimbal.RC->RC_ctrl->rc.ch[2], Gimbal.RC->RC_ctrl->rc.ch[1],Gimbal.RC->RC_ctrl->rc.ch[3],1);
+    if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic) {
+        Arms_Drive(Gimbal.Graps->TD_t,  Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out,Gimbal.RC->KCS.out ,Gimbal.RC->RC_ctrl->rc.ch[3],1);
+    }else{
+        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+    }
+
     Reserve_Drive();
 }
 
