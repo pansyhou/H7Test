@@ -53,4 +53,5 @@ h7test/remote_task.o: ..\Task\Src\Remote_Task.c \
   ..\Algorithm\inc\filter.h ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\Task\Inc\Detect_Task.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
+  ..\Task\Inc\Remote_Task.h

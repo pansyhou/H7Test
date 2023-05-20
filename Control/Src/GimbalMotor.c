@@ -99,23 +99,22 @@ void MotorDataDeal(FDCAN_HandleTypeDef *hfdcan) {
                 TD_t.Yaw_Motor.temp = (int16_t) (data[6]);                    //当前电机温度
             }break;
 
-            case CAN_M3508_MOTOR4_ID: {//储矿
-                CAN_DATA_Encoder_Deal((int16_t) ((data[0] << 8) + (data[1])), //电机位置
-                                      (int16_t) ((data[2] << 8) + (data[3])), //电机速度
-                                      4);
-                Grasp.Reserve_Motor.anper = (int16_t) ((data[4] << 8) + (data[5]));//当前电机点流
-                Grasp.Reserve_Motor.temp = (int16_t) (data[6]);                    //当前电机温度
-            }break;
-
-            case CAN_M3508_MOTOR5_ID://前伸
+          
+            case CAN_M3508_MOTOR4_ID://前伸
             {
                 CAN_DATA_Encoder_Deal((int16_t) ((data[0] << 8) + (data[1])),//电机位置
                                       (int16_t) ((data[2] << 8) + (data[3])),//电机速度
-                                      5);
+                                      4);
                 TD_t.Forward_Motor.anper = (int16_t) ((data[4] << 8) + (data[5]));//当前电机点流
                 TD_t.Forward_Motor.temp = (int16_t) (data[6]);                    //当前电机温度
             }break;
-
+						case CAN_M3508_MOTOR5_ID: {//储矿
+                CAN_DATA_Encoder_Deal((int16_t) ((data[0] << 8) + (data[1])), //电机位置
+                                      (int16_t) ((data[2] << 8) + (data[3])), //电机速度
+                                      5);
+                Grasp.Reserve_Motor.anper = (int16_t) ((data[4] << 8) + (data[5]));//当前电机点流
+                Grasp.Reserve_Motor.temp = (int16_t) (data[6]);                    //当前电机温度
+            }break;
 
             default:
                 break;
@@ -180,7 +179,7 @@ void Gimbal_Motor_Init(void) {
     PidInitMode(&Grasp.Reserve_Motor.PPID, Integral_Limit, 200, 200);
     PidInitMode(&Grasp.Reserve_Motor.PPID, Output_Limit, 6000, 0);
 
-    Grasp.Reserve_LockPos = 8647;
+    Grasp.Reserve_LockPos = 9400;
     /*******************机械臂部分初始化*******************/
     // 绑定机械臂结构体到大结构体上
     Grasp.TD_t = &TD_t;
@@ -218,21 +217,23 @@ void Gimbal_Motor_Init(void) {
 
     TD_t.Yaw_Motor.Encoder = Encoder_Init(M3508, 3);
 
-    Grasp.Reserve_Motor.Encoder = Encoder_Init(M3508, 4);
+    Grasp.Reserve_Motor.Encoder = Encoder_Init(M3508, 5);
 
-    TD_t.Forward_Motor.Encoder = Encoder_Init(M3508, 5);
+    TD_t.Forward_Motor.Encoder = Encoder_Init(M3508, 4);
 
 
     //pitch motor speed pid init
     PidInit(&TD_t.Pitch_Motor.SPID, Spid[2][0], Spid[2][1], Spid[2][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Pitch_Motor.SPID, Integral_Limit, 200, 200);
     PidInitMode(&TD_t.Pitch_Motor.SPID, Output_Limit, 9000, 0);
+
+
     //pitch motor position pid init
-    PidInit(&TD_t.Pitch_Motor.PPID, Ppid[2][0], Ppid[2][1], Ppid[2][2], Integral_Limit | Output_Limit);
+    PidInit(&TD_t.Pitch_Motor.PPID, Ppid[2][0], Ppid[2][1], Ppid[2][2], Integral_Limit | Output_Limit );
     PidInitMode(&TD_t.Pitch_Motor.PPID, Integral_Limit, 200, 200);
     PidInitMode(&TD_t.Pitch_Motor.PPID, Output_Limit, 9000, 0);
-
-
+//    PidInitMode(&TD_t.Pitch_Motor.PPID, ChangingIntegrationRate, 1000, -1000);
+    //上下两套PID
     PidInit(&TD_t.Pitch_Motor.UP_SPID, Spid[8][0], Spid[8][1], Spid[8][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Pitch_Motor.UP_SPID, Integral_Limit, 200, 200);
     PidInitMode(&TD_t.Pitch_Motor.UP_SPID, Output_Limit, 9000, 0);
@@ -240,6 +241,7 @@ void Gimbal_Motor_Init(void) {
     PidInit(&TD_t.Pitch_Motor.UP_PPID, Ppid[8][0], Ppid[8][1], Ppid[8][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Pitch_Motor.UP_PPID, Integral_Limit, 200, 200);
     PidInitMode(&TD_t.Pitch_Motor.UP_PPID, Output_Limit, 9000, 0);
+
 
 
     //roll motor speed pid init
@@ -298,7 +300,7 @@ float k1 = -0.5f;
 float k2 = 1.0f;
 void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, int16_t joint , int16_t  forward ,bool_t update_sucker_state) {
     int pitch_out = 0;
-    taskENTER_CRITICAL();
+//    taskENTER_CRITICAL();
     fp32 see_T_yaw,see_current_yaw;
 //    if (update_sucker_state != Arm_t->Suker_state) {
 //        if (update_sucker_state == 1) {
@@ -332,20 +334,24 @@ void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, 
     if (pitch!=0) Arm_t->Pitch_LockPosition = Arm_t->Pitch_Motor.Encoder->Encode_Record_Val + pitch;
 
     //分开上下的PID
-    if (pitch > 0) {
-        motor_position_speed_control(&Arm_t->Pitch_Motor.UP_SPID,
-                                     &Arm_t->Pitch_Motor.UP_PPID,
-                                     Arm_t->Pitch_LockPosition,
-                                     Arm_t->Pitch_Motor.Encoder->Encode_Record_Val,
-                                     Arm_t->Pitch_Motor.Encoder->Speed[1]);
-    } else{
+//    if (pitch > 0) {
+//        motor_position_speed_control(&Arm_t->Pitch_Motor.UP_SPID,
+//                                     &Arm_t->Pitch_Motor.UP_PPID,
+//                                     Arm_t->Pitch_LockPosition,
+//                                     Arm_t->Pitch_Motor.Encoder->Encode_Record_Val,
+//                                     Arm_t->Pitch_Motor.Encoder->Speed[1]);
+//    } else{
+//        motor_position_speed_control(&Arm_t->Pitch_Motor.SPID,
+//                                     &Arm_t->Pitch_Motor.PPID,
+//                                     Arm_t->Pitch_LockPosition,
+//                                     Arm_t->Pitch_Motor.Encoder->Encode_Record_Val,
+//                                     Arm_t->Pitch_Motor.Encoder->Speed[1]);
+//    }
         motor_position_speed_control(&Arm_t->Pitch_Motor.SPID,
                                      &Arm_t->Pitch_Motor.PPID,
                                      Arm_t->Pitch_LockPosition,
                                      Arm_t->Pitch_Motor.Encoder->Encode_Record_Val,
                                      Arm_t->Pitch_Motor.Encoder->Speed[1]);
-    }
-
 
 
     if(roll!=0)Arm_t-> Roll_LockPosition = Arm_t->Roll_Motor.Encoder->Encode_Record_Val + roll;
@@ -382,7 +388,7 @@ void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, 
 
 
 
-    taskEXIT_CRITICAL();
+//    taskEXIT_CRITICAL();
 
     CAN1_C620_OR_C610_201_TO_204_SendMsg(Arm_t->Roll_Motor.SPID.out, Arm_t->Pitch_Motor.SPID.out,
                                          Arm_t->Yaw_Motor.SPID.out, Arm_t->Forward_Motor.SPID.out);
@@ -399,20 +405,22 @@ void Three_Degrees_Arms_Init() {
 
 
 
-void Reserve_Drive(){
-//    if (REMOTE.state.Reserve_Status == Reserve_Close) {
-//        motor_position_speed_control(&Grasp.Reserve_Motor.SPID,
-//                                     &Grasp.Reserve_Motor.PPID,
-//                                     Grasp.Reserve_LockPos,
-//                                     Grasp.Reserve_Motor.Encoder->Encode_Record_Val,
-//                                     Grasp.Reserve_Motor.Encoder->Speed[1]);
+void Reserve_Drive(Reserve_Status_e status){
+    if (status == Reserve_Close) {
+        motor_position_speed_control(&Grasp.Reserve_Motor.SPID,
+                                     &Grasp.Reserve_Motor.PPID,
+                                     -Grasp.Reserve_LockPos,
+                                     Grasp.Reserve_Motor.Encoder->Encode_Record_Val,
+                                     Grasp.Reserve_Motor.Encoder->Speed[1]);
 
-//    } else motor_position_speed_control(&Grasp.Reserve_Motor.SPID,
-//                                        &Grasp.Reserve_Motor.PPID,
-//                                        0,
-//                                        Grasp.Reserve_Motor.Encoder->Encode_Record_Val,
-//                                        Grasp.Reserve_Motor.Encoder->Speed[1]);
-//    CAN1_C620_OR_C610_205_TO_208_SendMsg(Grasp.Reserve_Motor.SPID.out, 0, 0, 0);
+    } else motor_position_speed_control(&Grasp.Reserve_Motor.SPID,
+                                        &Grasp.Reserve_Motor.PPID,
+                                        0,
+                                        Grasp.Reserve_Motor.Encoder->Encode_Record_Val,
+                                        Grasp.Reserve_Motor.Encoder->Speed[1]);
+    CAN1_C620_OR_C610_205_TO_208_SendMsg(Grasp.Reserve_Motor.SPID.out, 0, 0, 0);
+//    CAN1_C620_OR_C610_201_TO_204_SendMsg(0, 0, 0, Grasp.Reserve_Motor.SPID.out);
+
 }
 /*
  * 两杆机械臂控制方式有很多，目前想到的三种方法，都有一定的缺陷和优点

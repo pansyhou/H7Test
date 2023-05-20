@@ -27,7 +27,20 @@ Project File Date:  05/17/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'H7Test'
-"H7Test\H7Test.axf" - 0 Error(s), 0 Warning(s).
+../Control/Src/RemoteDeal.c(40): warning: In file included from...
+../Control/Inc\RemoteDeal.h(10): warning: In file included from...
+../Bsp\bsp_dr16.h(49): warning: 'packed' attribute ignored [-Wignored-attributes]
+typedef __packed struct{
+        ^
+../Drivers/STM32H7xx_HAL_Driver/Inc\stm32h7xx_hal_def.h(115): note: expanded from macro '__packed'
+    #define __packed  __attribute__((packed))
+                                     ^
+1 warning generated.
+compiling RemoteDeal.c...
+linking...
+Program Size: Code=70108 RO-data=1308 RW-data=28 ZI-data=22780  
+FromELF: creating hex file...
+"H7Test\H7Test.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,7 +64,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

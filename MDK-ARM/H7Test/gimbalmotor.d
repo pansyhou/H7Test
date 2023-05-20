@@ -40,8 +40,7 @@ h7test/gimbalmotor.o: ..\Control\Src\GimbalMotor.c \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
   ..\platform\BoardConfig.h ..\Core\Inc\fdcan.h ..\Control\Inc\rmmotor.h \
   ..\Algorithm\inc\pid.h ..\Algorithm\inc\struct_typedef.h \
-  ..\Bsp\bsp_Motor_Encoder.h ..\Bsp\bsp_pwm.h ..\Core\Inc\tim.h \
-  ..\Control\Inc\SYSInit.h \
+  ..\Bsp\bsp_Motor_Encoder.h ..\Control\Inc\SYSInit.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
@@ -62,4 +61,5 @@ h7test/gimbalmotor.o: ..\Control\Src\GimbalMotor.c \
   ..\Core\Inc\dma.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
   ..\Control\Inc\RemoteDeal.h ..\Bsp\bsp_dr16.h \
   ..\Algorithm\inc\filter.h ..\Middlewares\ST\ARM\DSP\Inc\arm_math.h \
-  ..\Task\Inc\Detect_Task.h ..\Algorithm\inc\maths.h
+  ..\Task\Inc\Detect_Task.h ..\Core\Inc\tim.h ..\Algorithm\inc\maths.h \
+  ..\Bsp\bsp_pwm.h

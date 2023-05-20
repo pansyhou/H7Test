@@ -104,9 +104,9 @@ int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {
     RC_CTRL->rc.ch[1] = rc_deadline_limit(RC_CTRL->rc.ch[1], 4); //死区限制
     RC_CTRL->rc.ch[2] = rc_deadline_limit(RC_CTRL->rc.ch[2], 4); //死区限制
     RC_CTRL->rc.ch[3] = rc_deadline_limit(RC_CTRL->rc.ch[3], 4); //死区限制
-    RC_CTRL->rc.ch[4] = rc_deadline_limit(RC_CTRL->rc.ch[3], 4); //死区限制
-																														 
+    RC_CTRL->rc.ch[4] = rc_deadline_limit(RC_CTRL->rc.ch[4], 4); //死区限制
 
+    detect_hook(DBUS_TOE);//记录在线时间
     return 0;
 }
 

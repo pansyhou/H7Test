@@ -34,6 +34,14 @@ typedef enum {
     Reserve_Status_End
 } Reserve_Status_e;
 
+typedef enum {
+    Layout_Shift = 0,
+	Layout_Ctrl = 1,
+	Layout_Normal = 2,
+	Layout_End
+} Key_layout_e;
+
+
 
 typedef enum {
     Arm_Control_Classic = 0,
@@ -80,6 +88,8 @@ typedef  struct
     unsigned char Reserve_Status: 1;  //储矿0为关,1为开
 
     unsigned char Arm_Control_Method: 2;  //储矿0为关,1为开
+
+	unsigned char Key_layout: 2;	//键盘层
 
 } KeyBoard_State_t;
 

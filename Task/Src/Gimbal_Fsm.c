@@ -173,13 +173,51 @@ static void Arm_State(void)
 
 static void Arm_bhv(void)
 {
-    if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic) {
-        Arms_Drive(Gimbal.Graps->TD_t,  Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out,Gimbal.RC->KCS.out ,Gimbal.RC->RC_ctrl->rc.ch[3],1);
-    }else{
-        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+    switch (Gimbal.RC->state.Key_layout == Layout_Normal) {
+        case Layout_Shift:{
+            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle)
+            Arms_Drive(Gimbal.Graps->TD_t, 0, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, Gimbal.RC->KQE.out,
+                       Gimbal.RC->KCV.out, 1);
+            else {
+                Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+            }
+            //缺少抬升
+        }
+            break;
+        case Layout_Ctrl:
+        {
+
+        }
+            break;
+        case Layout_Normal:
+        {
+            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle) {
+                Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, 0,
+                           Gimbal.RC->KCV.out, 1);
+            }
+            else{ Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);}
+        }
+            break;
+        default:{
+            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle) {
+            Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, 0,
+                       Gimbal.RC->KCV.out, 1);
+            }else{
+                Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+            }
+        }break;
     }
 
-    Reserve_Drive();
+//    if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle) {
+//        Arms_Drive(Gimbal.Graps->TD_t,  Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out,Gimbal.RC->KCS.out ,Gimbal.RC->RC_ctrl->rc.ch[3],1);
+//    }else if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic){
+//			Arms_Drive(Gimbal.Graps->TD_t,  0, Gimbal.RC->RC_ctrl->rc.ch[4], Gimbal.RC->KM_X.out,Gimbal.RC->KCS.out ,Gimbal.RC->RC_ctrl->rc.ch[3],1);
+//		}
+//		else{
+//        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+//    }
+
+
 }
 
 
@@ -190,7 +228,7 @@ static void Mining_Prepare(void)
     HAL_GPIO_WritePin(GPIOH, LED_Red_Pin , GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOH, LED_Green_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOH, LED_Blue_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LED_Blue_GPIO_Port,LED_Blue_Pin,GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LED_Blue_GPIO_Port,LED_Blue_Pin,GPIO_PIN_SET);8
 #endif
 
 }
@@ -236,7 +274,10 @@ static void KeyBoard_State(void){
 
 //
 static void KeyBoard_bhv(void){
-    if (Gimbal.RC->state.Global_Status == Follow_Independent) {
-        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0,1);
-    }
+//    if (Gimbal.RC->state.Global_Status == Follow_Independent) {
+//        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0,1);
+//    }
+
+        Reserve_Drive(Gimbal.RC->state.Reserve_Status);
+
 }

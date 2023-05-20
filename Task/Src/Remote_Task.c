@@ -23,7 +23,7 @@
 #include "task.h"
 #include "bsp_can.h"
 #include "BoardCommuni.h"
-
+#include "Remote_Task.h"
 
 
 void Remote_Task(void *pvParameters)

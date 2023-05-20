@@ -4,7 +4,7 @@
 #include "bsp_can.h"
 #include "rmmotor.h"
 
-
+#include "SYSInit.h"
 
 
 #ifdef configUSE_H7
@@ -47,6 +47,14 @@
 #define Pitch_3508_Ppid_I 0.0f
 #define Pitch_3508_Ppid_D 0.5f
 
+//变积分前的备份
+//#define Pitch_3508_Spid_P 6.0f
+//#define Pitch_3508_Spid_I 0.0f
+//#define Pitch_3508_Spid_D 1.0f
+//
+//#define Pitch_3508_Ppid_P 1.0f
+//#define Pitch_3508_Ppid_I 0.0f
+//#define Pitch_3508_Ppid_D 0.5f
 
 #define Pitch_3508_Spid_P_UP 10.0f
 #define Pitch_3508_Spid_I_UP 0.0f
@@ -153,7 +161,7 @@ void Gimbal_PowerOff_Drive(Grasp_t *G);
 void Arms_Drive(Three_D_Arm_t *Arm_t,  int16_t roll, int16_t pitch, int16_t yaw,int16_t joint ,int16_t  forward, bool_t update_sucker_state) ;
 void Three_Degrees_Arms_Init(void);
 void MotorVelocityCurve(Motor_t *curve);
-void Reserve_Drive();
+void Reserve_Drive(Reserve_Status_e status);
 static void CalCurveSPTA(Motor_t *spta);
 #endif // !__GIMBAL_MOTOR_H
 

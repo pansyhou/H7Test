@@ -43,7 +43,7 @@ h7test/gimbal_task.o: ..\Task\Src\Gimbal_Task.c ..\Task\Inc\Gimbal_Task.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\Task\Inc\Detect_Task.h ..\Control\Inc\GimbalMotor.h \
   ..\Bsp\bsp_can.h ..\Core\Inc\fdcan.h ..\Control\Inc\rmmotor.h \
-  ..\Algorithm\inc\pid.h ..\Bsp\bsp_Motor_Encoder.h ..\Task\Inc\fsm.h \
+  ..\Algorithm\inc\pid.h ..\Bsp\bsp_Motor_Encoder.h \
   ..\Control\Inc\SYSInit.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
@@ -62,4 +62,5 @@ h7test/gimbal_task.o: ..\Task\Src\Gimbal_Task.c ..\Task\Inc\Gimbal_Task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\Core\Inc\dma.h ..\Core\Inc\usart.h ..\Core\Inc\gpio.h \
-  ..\Core\Inc\tim.h ..\Algorithm\inc\maths.h ..\Task\Inc\Gimbal_Fsm.h
+  ..\Core\Inc\tim.h ..\Algorithm\inc\maths.h ..\Task\Inc\fsm.h \
+  ..\Task\Inc\Gimbal_Fsm.h

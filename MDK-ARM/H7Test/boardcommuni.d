@@ -46,7 +46,7 @@ h7test/boardcommuni.o: ..\Control\Src\BoardCommuni.c \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
   ..\Task\Inc\Gimbal_Task.h ..\Control\Inc\GimbalMotor.h \
   ..\Bsp\bsp_can.h ..\Core\Inc\fdcan.h ..\Control\Inc\rmmotor.h \
-  ..\Algorithm\inc\pid.h ..\Bsp\bsp_Motor_Encoder.h ..\Task\Inc\fsm.h \
+  ..\Algorithm\inc\pid.h ..\Bsp\bsp_Motor_Encoder.h \
   ..\Control\Inc\SYSInit.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\freertos.h \
@@ -64,7 +64,7 @@ h7test/boardcommuni.o: ..\Control\Src\BoardCommuni.c \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\Core\Inc\dma.h ..\Core\Inc\gpio.h ..\Core\Inc\tim.h \
-  ..\Algorithm\inc\maths.h ..\Algorithm\inc\fifo.h \
+  ..\Algorithm\inc\maths.h ..\Task\Inc\fsm.h ..\Algorithm\inc\fifo.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\errno.h \
   ..\Algorithm\inc\linux_list.h

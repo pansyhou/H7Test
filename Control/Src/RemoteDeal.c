@@ -145,7 +145,7 @@ static void Key_Mouse_Deal(void)
     if (key & KEY_PRESSED_OFFSET_G && !(REMOTE.last_key & KEY_PRESSED_OFFSET_G)) {
         REMOTE.state.Global_Status = 1 - REMOTE.state.Global_Status;
     }
-    //整车状态切换
+    //夹矿状态切换
     if (key & KEY_PRESSED_OFFSET_B && !(REMOTE.last_key & KEY_PRESSED_OFFSET_B)) {
         REMOTE.state.Reserve_Status = 1 - REMOTE.state.Reserve_Status;
     }
@@ -250,51 +250,38 @@ static void Key_Mouse_Deal(void)
     }
 
     if (key & KEY_PRESSED_OFFSET_Q) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
             qe[0]=-500;
-        }
     }
     if (key & KEY_PRESSED_OFFSET_E) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
             qe[1]=500;
-        }
     }
     if (key & KEY_PRESSED_OFFSET_C) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
             cv[0]=-500;
-        }
     }
     if (key & KEY_PRESSED_OFFSET_V) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
             cv[1]=500;
-        }
     }
-
     if (key & KEY_PRESSED_OFFSET_Z) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
             zx[0]=-500;
-        }
     }
     if (key & KEY_PRESSED_OFFSET_X) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
             zx[1]=500;
-        }
     }
-    if (key & KEY_PRESSED_OFFSET_CTRL) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
-            cs[0]=-500;
-        }
-    }
+
+
+/*************************** Key layout 处理 ***************************/
     if (key & KEY_PRESSED_OFFSET_SHIFT) {
-        if (REMOTE.state.Global_Status == Arm_Independent){
-            cs[1]=500;
-        }
+        REMOTE.state.Key_layout = Layout_Ctrl;
+    }else if (key & KEY_PRESSED_OFFSET_CTRL) {
+        REMOTE.state.Key_layout = Layout_Shift;
+    } else {
+        REMOTE.state.Key_layout = Layout_Normal;
     }
 
-
-
+    //是这样的，ctrl shift用来切换key layout
+    //实现只用两层
+    //通过滤波来实现微调
     REMOTE.RC_ctrl->key.kv1 = ad[0] + ad[1];
-
     REMOTE.RC_ctrl->key.kqe = qe[0] + qe[1];
     REMOTE.RC_ctrl->key.kcv = cv[0] + cv[1];
     REMOTE.RC_ctrl->key.kzx = zx[0] + zx[1];
@@ -309,7 +296,7 @@ static void Key_Mouse_Deal(void)
     first_order_filter(&REMOTE.KM_X, REMOTE.RC_ctrl->mouse.x);
     first_order_filter(&REMOTE.KM_Y, REMOTE.RC_ctrl->mouse.y);
 
-		rcy=REMOTE.KM_Y.out;
+    rcy=REMOTE.KM_Y.out;
     /*************************************鼠标X轴************************************/
     REMOTE.RC_ctrl->mouse.x *= 5.0f;
     /**************************************鼠标Y轴***********************************/
@@ -490,6 +477,6 @@ void Remote_Data_Deal(void)
 //	}
 		
 	Key_Mouse_Deal();
-    detect_hook(DBUS_TOE);//记录在线时间
+
 }
 
