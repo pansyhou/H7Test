@@ -62,7 +62,7 @@ void Gimbal_Task(void *pvParameters)
     while(1)
     {
         FSM_Deal(Gimbal.Gimbal_Fsm,Gimbal.RC->RC_ctrl->rc.s1,Gimbal.RC->RC_ctrl->rc.s2);
-        vTaskDelay(2);
+        vTaskDelay(5);
     }
 
 }

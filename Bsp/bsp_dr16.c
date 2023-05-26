@@ -70,7 +70,7 @@ int16_t rc_deadline_limit(int16_t input, int16_t dealine)
 
 void  RC_UART_Handler(){
     RC_DataProcess(Sbus_RX_Buffer, &rc_ctl);
-    detect_hook(DBUS_TOE);
+
 }
 
 int RC_DataProcess(volatile const uint8_t *pData, RC_ctrl_t *RC_CTRL) {

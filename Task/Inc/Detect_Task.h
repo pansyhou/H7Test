@@ -5,7 +5,7 @@
 #include "struct_typedef.h"
 
 #define DETECT_TASK_INIT_TIME 80
-#define DETECT_CONTROL_TIME 10
+#define DETECT_CONTROL_TIME 15
 
 
 //错误码以及对应设备顺序
@@ -46,5 +46,6 @@ extern void Detect_Task(void const *pvParameters);
 extern bool_t toe_is_error(uint8_t err);
 extern void detect_hook(uint8_t toe);
 extern const Derror_t *get_error_list_point(void);
+extern bool_t Is_Online(uint8_t toe);
 #endif
 

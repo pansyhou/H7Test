@@ -24,14 +24,14 @@
 
 
 //前伸电机速度环和位置速度环PID
-#define Forword_Motor1_Spid_P 1.0f
+#define Forword_Motor1_Spid_P 2.0f
 #define Forword_Motor1_Spid_I 0.0f
-#define Forword_Motor1_Spid_D 0.0f
-#define Forword_Motor1_Ppid_P 1.0f
+#define Forword_Motor1_Spid_D 2.0f
+#define Forword_Motor1_Ppid_P 0.8f
 #define Forword_Motor1_Ppid_I 0.0f
-#define Forword_Motor1_Ppid_D 0.0f
+#define Forword_Motor1_Ppid_D 5.0f
 
-#define Forword_Motor2_Spid_P 1.0f
+#define Forword_Motor2_Spid_P 0.8f
 #define Forword_Motor2_Spid_I 0.0f
 #define Forword_Motor2_Spid_D 0.0f
 #define Forword_Motor2_Ppid_P 1.0f
@@ -39,13 +39,13 @@
 #define Forword_Motor2_Ppid_D 0.0f
 //机械臂电机速度环和位置速度环PID
 
-#define Pitch_3508_Spid_P 6.0f
+#define Pitch_3508_Spid_P 4.0f
 #define Pitch_3508_Spid_I 0.0f
-#define Pitch_3508_Spid_D 1.0f
+#define Pitch_3508_Spid_D 4.0f
 
-#define Pitch_3508_Ppid_P 1.0f
+#define Pitch_3508_Ppid_P 0.8f
 #define Pitch_3508_Ppid_I 0.0f
-#define Pitch_3508_Ppid_D 0.5f
+#define Pitch_3508_Ppid_D 9.0f
 
 //变积分前的备份
 //#define Pitch_3508_Spid_P 6.0f
@@ -68,19 +68,19 @@
 #define Roll_Spid_I 0.00f
 #define Roll_Spid_D 0.0f
 
-#define Roll_Ppid_P 1.0f
-#define Roll_Ppid_I 0.0f
+#define Roll_Ppid_P 0.5f
+#define Roll_Ppid_I 0.01f
 #define Roll_Ppid_D 1.0f
 
 
 #define Yaw_6020_Spid_P 1.0f
 #define Yaw_6020_Spid_I 0.0f
-#define Yaw_6020_Spid_D 0.0f
+#define Yaw_6020_Spid_D 2.0f
 
 
 #define Yaw_6020_Ppid_P 1.0f
 #define Yaw_6020_Ppid_I 0.0f
-#define Yaw_6020_Ppid_D 0.0f
+#define Yaw_6020_Ppid_D 2.0f
 
 #define Tranverse_2006_Spid_P 1.0f
 #define Tranverse_2006_Spid_I 0.01f
@@ -131,6 +131,7 @@ typedef  struct
     int32_t Pitch_LockPosition;
     int32_t Roll_LockPosition;
     int32_t Yaw_LockPosition;
+    int32_t Forward_LockPosition;
     float l1;
     float l2;
     float l3;

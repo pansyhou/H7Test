@@ -173,40 +173,44 @@ static void Arm_State(void)
 
 static void Arm_bhv(void)
 {
-    switch (Gimbal.RC->state.Key_layout == Layout_Normal) {
-        case Layout_Shift:{
-            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle)
-            Arms_Drive(Gimbal.Graps->TD_t, 0, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, Gimbal.RC->KQE.out,
-                       Gimbal.RC->KCV.out, 1);
-            else {
-                Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
-            }
-            //缺少抬升
-        }
-            break;
-        case Layout_Ctrl:
-        {
 
-        }
-            break;
-        case Layout_Normal:
-        {
-            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle) {
-                Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, 0,
-                           Gimbal.RC->KCV.out, 1);
-            }
-            else{ Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);}
-        }
-            break;
-        default:{
-            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle) {
-            Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, 0,
-                       Gimbal.RC->KCV.out, 1);
-            }else{
-                Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
-            }
-        }break;
-    }
+    Arms_Drive(Gimbal.Graps->TD_t, 0, Gimbal.RC->RC_ctrl->rc.ch[4]*5, 0, Gimbal.RC->RC_ctrl->rc.ch[1],
+               Gimbal.RC->RC_ctrl->rc.ch[2]*3,
+               1);
+//    switch (Gimbal.RC->state.Key_layout ) {
+//        case Layout_Shift:{
+//            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic)
+//            Arms_Drive(Gimbal.Graps->TD_t, 0, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, Gimbal.RC->KQE.out,
+//                       Gimbal.RC->KCV.out, 1);
+//            else {
+//                Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+//            }
+//            //缺少抬升
+//        }
+//            break;
+//        case Layout_Ctrl:
+//        {
+//
+//        }
+//            break;
+//        case Layout_Normal:
+//        {
+//            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic) {
+//                Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out+Gimbal.RC->RC_ctrl->rc.ch[4], Gimbal.RC->KM_X.out+Gimbal.RC->RC_ctrl->rc.ch[2], Gimbal.RC->RC_ctrl->rc.ch[3]+0,
+//                           Gimbal.RC->KCV.out+Gimbal.RC->RC_ctrl->rc.ch[1], 1);
+//            }
+//            else{ Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);}
+//        }
+//            break;
+//        default:{
+//            if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic) {
+//            Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, 0,
+//                       Gimbal.RC->KCV.out, 1);
+//            }else{
+//                Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+//            }
+//        }break;
+//    }
 
 //    if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Triangle) {
 //        Arms_Drive(Gimbal.Graps->TD_t,  Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out,Gimbal.RC->KCS.out ,Gimbal.RC->RC_ctrl->rc.ch[3],1);
@@ -249,10 +253,15 @@ static void KeyBoard_Prepare(void){
     HAL_GPIO_WritePin(GPIOH, LED_Red_Pin|LED_Green_Pin|LED_Blue_Pin , GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LED_Green_GPIO_Port,LED_Blue_Pin,GPIO_PIN_SET);
 #endif
+    Gimbal.Graps->TD_t->Forward_LockPosition = Gimbal.Graps->TD_t->Forward_Motor.Encoder->Encode_Record_Val;
+    Gimbal.Graps->TD_t->Pitch_LockPosition = Gimbal.Graps->TD_t->Pitch_Motor.Encoder->Encode_Record_Val;
+    Gimbal.Graps->TD_t->Roll_LockPosition = Gimbal.Graps->TD_t->Roll_Motor.Encoder->Encode_Record_Val;
+    Gimbal.Graps->TD_t->Yaw_LockPosition = Gimbal.Graps->TD_t->Yaw_Motor.Encoder->Encode_Record_Val;
 
 }
-static void KeyBoard_State(void){
 
+static void KeyBoard_State(void){
+    Gimbal_Fsm.Current_State->Behavior_Process=KeyBoard_bhv;
 }
 
 //#define KEY_PRESSED_OFFSET_W       ((uint16_t)1 << 0)     //控制底盘
@@ -274,10 +283,74 @@ static void KeyBoard_State(void){
 
 //
 static void KeyBoard_bhv(void){
-//    if (Gimbal.RC->state.Global_Status == Follow_Independent) {
-//        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0,1);
+    taskENTER_CRITICAL();
+//    if (Gimbal.RC->state.Global_Status == Follow_Independent) {Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0,1);}
+//    else{
+//        Arms_Drive(Gimbal.Graps->TD_t,
+//                   Gimbal.RC->RC_ctrl->key.kqe,
+//                   Gimbal.RC->RC_ctrl->rc.ch[4] * 5,
+//                   Gimbal.RC->RC_ctrl->mouse.x * 3,
+//                   0,
+//                   (Gimbal.RC->RC_ctrl->key.kcv / 2), 1);
 //    }
 
-        Reserve_Drive(Gimbal.RC->state.Reserve_Status);
+    if (Gimbal.RC->state.Global_Status == Follow_Independent) {
+        Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0,1);
+    }else{
+        switch (Gimbal.RC->state.Key_layout ) {
+            case Layout_Shift:{
+                if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic)
+                    Arms_Drive(Gimbal.Graps->TD_t,
+                               Gimbal.RC->RC_ctrl->key.kqe*4,
+                               0,
+                               Gimbal.RC->RC_ctrl->mouse.x * 6,
+                               0,
+                               (float)(Gimbal.RC->RC_ctrl->key.kcv) * 3.5f, 1);
+
+                else {
+                    Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+                }
+                //缺少抬升
+            }break;
+
+            case Layout_Ctrl:
+            {
+
+            }break;
+
+            case Layout_Normal:
+            {
+                if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic) {
+                    //qe 大pitch
+                    //鼠标x yaw
+                    //cv是舵机
+                    //zx是抬升
+                    Arms_Drive(Gimbal.Graps->TD_t,
+                               0,
+                               ((Gimbal.RC->RC_ctrl->key.kqe / 5) * 4 + Gimbal.RC->RC_ctrl->rc.ch[4]) * 5,
+                               (Gimbal.RC->RC_ctrl->mouse.x + Gimbal.RC->RC_ctrl->rc.ch[2]) * 6,
+                               (Gimbal.RC->KCV.out / 5) * 4 + Gimbal.RC->RC_ctrl->rc.ch[3],
+                               0 + Gimbal.RC->RC_ctrl->rc.ch[1],
+                               1);
+                }
+                else{ Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);}
+            }break;
+
+            default:{
+                if(Gimbal.RC->state.Arm_Control_Method==Arm_Control_Classic) {
+                    Arms_Drive(Gimbal.Graps->TD_t, Gimbal.RC->KQE.out, Gimbal.RC->KM_Y.out, Gimbal.RC->KM_X.out, 0,
+                               Gimbal.RC->KCV.out, 1);
+                }else{
+                    Arms_Drive(Gimbal.Graps->TD_t, 0, 0, 0, 0, 0, 1);
+                }
+            }break;
+        }
+    }
+
+
+    taskEXIT_CRITICAL();
+//    Arms_Drive(Gimbal.Graps->TD_t,  Gimbal.RC->RC_ctrl->rc.ch[0], Gimbal.RC->RC_ctrl->rc.ch[4]*3, -Gimbal.RC->RC_ctrl->rc.ch[2], Gimbal.RC->RC_ctrl->rc.ch[1],Gimbal.RC->RC_ctrl->rc.ch[3],1);
+
+//        Reserve_Drive(Gimbal.RC->state.Reserve_Status);
 
 }

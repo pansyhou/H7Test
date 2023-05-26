@@ -133,6 +133,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj"
   "CMakeFiles/H7Test.elf.dir/platform/GCC/ARM_CM4F/port.c.obj.d"
   "H7Test.elf"
+  "H7Test.elf.manifest"
   "H7Test.elf.pdb"
 )
 

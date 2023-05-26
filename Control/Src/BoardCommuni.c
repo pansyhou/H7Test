@@ -50,6 +50,19 @@ int16_t Jscope_RC_ch2;
 #endif
 
 
+
+#define Status_Msg_Packed(x)  ((x.Global_Status << 7) |         \
+                              (x.Camera_is_Follow << 6) |         \
+                              (x.Arm_Control_Method << 4) |     \
+                              (x.Key_layout << 2) |             \
+                              (x.Camera_Status))
+
+#define Status_Msg_Unpacked(x, state)  (state.Global_Status = (x >> 7) & 0x01; \
+                                       state.Camera_is_Follow = (x >> 6) & 0x01; \
+                                       state.Arm_Control_Method = (x >> 4) & 0x03; \
+                                       state.Key_layout = (x >> 2) & 0x03; \
+                                       state.Camera_Status = x & 0x03)
+
 /*****************普普通通串口版本*********************/
 
 ///************************** Dongguan-University of Technology -ACE**************************
@@ -121,6 +134,7 @@ int16_t Jscope_RC_ch2;
 /****************CAN版本*****************/
 static uint8_t RC_Data1[8];
 static uint8_t RC_Data2[8];
+static uint8_t RC_Data3[8];
 void CAN_A2B_RC_Send(void)
 {
     RC_Data1[0] = Gimbal.RC->RC_ctrl->rc.ch[0] >> 8;
@@ -138,24 +152,52 @@ void CAN_A2B_RC_Send(void)
 #if defined (configUSE_C_Board ) || defined (configUSE_F4)
     ECF_CAN_Send_Msg_FIFO(&hcan2,0x100, RC_Data1, 8);
 #endif
-    vTaskDelay(2);
+    vTaskDelay(1);
 	
     RC_Data2[0] = Gimbal.RC->RC_ctrl->rc.ch[4] >> 8;
     RC_Data2[1] = (uint8_t)Gimbal.RC->RC_ctrl->rc.ch[4] ;
     RC_Data2[2] = Gimbal.RC->RC_ctrl->rc.s1;
     RC_Data2[3] = Gimbal.RC->RC_ctrl->rc.s2;
-    RC_Data2[4]=0;
-    RC_Data2[5]=0;
-    RC_Data2[6]=0;
-    RC_Data2[7]=0;
+    RC_Data2[4] = Gimbal.RC->RC_ctrl->mouse.x >> 8;
+    RC_Data2[5] = (uint8_t)Gimbal.RC->RC_ctrl->mouse.x;
+    RC_Data2[6] = Gimbal.RC->RC_ctrl->mouse.y >> 8;
+    RC_Data2[7] = (uint8_t)Gimbal.RC->RC_ctrl->mouse.y;
 
 #ifdef configUSE_H7
-    ECF_CAN_Send_Msg_FIFO(Gimbal.fdcan2Handle,0x100, RC_Data1, 8);
+    ECF_CAN_Send_Msg_FIFO(Gimbal.fdcan2Handle,0x102, RC_Data2, 8);
 #endif
 
 #if defined (configUSE_C_Board ) || defined (configUSE_F4)
     ECF_CAN_Send_Msg_FIFO(&hcan2,0x102, RC_Data2, 8);
 #endif
+
+    vTaskDelay(1);
+
+    RC_Data3[0] = (uint8_t) ((Gimbal.RC->RC_ctrl->mouse.press_l & 0x01) << 1) | (Gimbal.RC->RC_ctrl->mouse.press_r & 0x01);
+    RC_Data3[1] = Gimbal.RC->RC_ctrl->key.v >> 8;
+    RC_Data3[2] = (uint8_t)Gimbal.RC->RC_ctrl->key.v ;
+    RC_Data3[3] = 0;
+    RC_Data3[4] = 0;
+    RC_Data3[5] = 0;
+    RC_Data3[6] = 0;
+
+    //如果在线，将解码的状态发送过去
+    if (!(Is_Online(DBUS_TOE))) {
+        RC_Data3[7] = (uint8_t) Status_Msg_Packed(Gimbal.RC->state);
+    }else{
+        RC_Data3[7] = 0;
+    }
+
+
+
+#ifdef configUSE_H7
+    ECF_CAN_Send_Msg_FIFO(Gimbal.fdcan2Handle,0x104, RC_Data3, 8);
+#endif
+
+#if defined (configUSE_C_Board ) || defined (configUSE_F4)
+    ECF_CAN_Send_Msg_FIFO(&hcan2,0x104, RC_Data3, 8);
+#endif
+
 
 }
 
@@ -224,7 +266,7 @@ void CAN_A2B_KM_Send(void)
 
 //  if (result != 0 && huart1.gState == HAL_UART_STATE_READY) //当没有接收的时候l,防止数据被冲掉
 //  {
-//    len = fifo_read_buff(&fifo_usart1_tx, Usart1_Tx, USART1_TX_LEN); //从循环缓冲区获取数据
+//    len = fifo_read_buf   f(&fifo_usart1_tx, Usart1_Tx, USART1_TX_LEN); //从循环缓冲区获取数据
 
 //    if (HAL_UART_Transmit_DMA(&huart1, Usart1_Tx, len) != HAL_OK) //开启dma传输
 //    {

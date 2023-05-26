@@ -37,6 +37,9 @@ Grasp_t Grasp;
 
 
 
+volatile int pitch_pos=0;
+volatile int pitch_out=0;
+volatile int pitch_anper=0;
 #if defined (configUSE_C_Board ) || defined (configUSE_F4)
 void MotorDataDeal(CAN_RxHeaderTypeDef *header, uint8_t *data);
 #endif
@@ -108,7 +111,8 @@ void MotorDataDeal(FDCAN_HandleTypeDef *hfdcan) {
                 TD_t.Forward_Motor.anper = (int16_t) ((data[4] << 8) + (data[5]));//当前电机点流
                 TD_t.Forward_Motor.temp = (int16_t) (data[6]);                    //当前电机温度
             }break;
-						case CAN_M3508_MOTOR5_ID: {//储矿
+
+            case CAN_M3508_MOTOR5_ID: {//储矿
                 CAN_DATA_Encoder_Deal((int16_t) ((data[0] << 8) + (data[1])), //电机位置
                                       (int16_t) ((data[2] << 8) + (data[3])), //电机速度
                                       5);
@@ -233,6 +237,8 @@ void Gimbal_Motor_Init(void) {
     PidInitMode(&TD_t.Pitch_Motor.PPID, Integral_Limit, 200, 200);
     PidInitMode(&TD_t.Pitch_Motor.PPID, Output_Limit, 9000, 0);
 //    PidInitMode(&TD_t.Pitch_Motor.PPID, ChangingIntegrationRate, 1000, -1000);
+
+
     //上下两套PID
     PidInit(&TD_t.Pitch_Motor.UP_SPID, Spid[8][0], Spid[8][1], Spid[8][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Pitch_Motor.UP_SPID, Integral_Limit, 200, 200);
@@ -247,34 +253,40 @@ void Gimbal_Motor_Init(void) {
     //roll motor speed pid init
     PidInit(&TD_t.Roll_Motor.SPID, Spid[3][0], Spid[3][1], Spid[3][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Roll_Motor.SPID, Integral_Limit, 200, 200);
-    PidInitMode(&TD_t.Roll_Motor.SPID, Output_Limit, 5000, 0);
+    PidInitMode(&TD_t.Roll_Motor.SPID, Output_Limit, 10000, 0);
     //roll motor position pid init
     PidInit(&TD_t.Roll_Motor.PPID, Ppid[3][0], Ppid[3][1], Ppid[3][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Roll_Motor.PPID, Integral_Limit, 200, 200);
-    PidInitMode(&TD_t.Roll_Motor.PPID, Output_Limit, 5000, 0);
+    PidInitMode(&TD_t.Roll_Motor.PPID, Output_Limit, 10000, 0);
 
     //yaw motor speed pid init
     PidInit(&TD_t.Yaw_Motor.SPID, Spid[4][0], Spid[4][1], Spid[4][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Yaw_Motor.SPID, Integral_Limit, 200, 200);
-    PidInitMode(&TD_t.Yaw_Motor.SPID, Output_Limit, 5000, 0);
+    PidInitMode(&TD_t.Yaw_Motor.SPID, Output_Limit, 7000, 0);
 
     //yaw motor position pid init
     PidInit(&TD_t.Yaw_Motor.PPID, Ppid[4][0], Ppid[4][1], Ppid[4][2], Integral_Limit | Output_Limit);
     PidInitMode(&TD_t.Yaw_Motor.PPID, Integral_Limit, 200, 200);
-    PidInitMode(&TD_t.Yaw_Motor.PPID, Output_Limit, 5000, 0);
+    PidInitMode(&TD_t.Yaw_Motor.PPID, Output_Limit, 7000, 0);
 
     //绑定CAN1接收回调函数 bind the CAN1 Rx callback function
     ECF_CAN_Rx_Callback_Register(&can1_manage, &MotorDataDeal);
 
     //PWM初始化
     ECF_PWM_50HZ_Output_Init(TD_t.Second_Pitch.sTIM_Handle, TD_t.Second_Pitch.sTIM_Channel, TD_t.Second_Pitch.Compare);
-
+	
+    REMOTE.state.Camera_Status = Camara_To_Horizontal;
 
 }
+
+
+
 
 void Gimbal_PowerOff_Drive(Grasp_t *G) {
+    CAN1_C620_OR_C610_201_TO_204_SendMsg(0, 0, 0, 0);
 
 }
+
 
 
 
@@ -298,9 +310,20 @@ void Grasp_Motor_Drive(void) {
  ************************** Dongguan-University of Technology -ACE***************************/
 float k1 = -0.5f;
 float k2 = 1.0f;
+float see_spid_derror =0;
+float see_spid_dout = 0;
 void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, int16_t joint , int16_t  forward ,bool_t update_sucker_state) {
+
+//    if (pitch > 661) {
+//        pitch = 660;
+//    } else if (pitch < -661) {
+//        pitch = -660;
+//    }
+
+
+
     int pitch_out = 0;
-//    taskENTER_CRITICAL();
+    taskENTER_CRITICAL();
     fp32 see_T_yaw,see_current_yaw;
 //    if (update_sucker_state != Arm_t->Suker_state) {
 //        if (update_sucker_state == 1) {
@@ -324,7 +347,15 @@ void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, 
     //TODO:还没加入角度为负的时候
     //也是要算出来他角度然后180-他
 
-	PidCalculate(&Arm_t->Forward_Motor.SPID, forward*(-10), Arm_t->Forward_Motor.Encoder->Speed[1]);
+    if (forward != 0) {
+        Arm_t->Forward_LockPosition = Arm_t->Forward_Motor.Encoder->Encode_Record_Val + forward;
+    }
+    motor_position_speed_control(&Arm_t->Forward_Motor.SPID,
+                                 &Arm_t->Forward_Motor.PPID,
+                                 Arm_t->Forward_LockPosition,
+                                 Arm_t->Forward_Motor.Encoder->Encode_Record_Val,
+                                 Arm_t->Forward_Motor.Encoder->Speed[1]);
+//	PidCalculate(&Arm_t->Forward_Motor.SPID, forward*(-10), Arm_t->Forward_Motor.Encoder->Speed[1]);
 
 
 
@@ -347,12 +378,21 @@ void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, 
 //                                     Arm_t->Pitch_Motor.Encoder->Encode_Record_Val,
 //                                     Arm_t->Pitch_Motor.Encoder->Speed[1]);
 //    }
+////  角度值为输入，输出的是0-1的系数
+//    Arm_t->Pitch_Motor.SPID.Kp =
+//            Pitch_3508_Spid_P * arm_sin_f32((float )((float)(Arm_t->Pitch_Motor.Encoder->Encode_Record_Val) / (8192 * 51)) + 0.08686);
+
         motor_position_speed_control(&Arm_t->Pitch_Motor.SPID,
                                      &Arm_t->Pitch_Motor.PPID,
                                      Arm_t->Pitch_LockPosition,
                                      Arm_t->Pitch_Motor.Encoder->Encode_Record_Val,
                                      Arm_t->Pitch_Motor.Encoder->Speed[1]);
+		Arm_t->Pitch_Motor.SPID.Derror = Arm_t->Pitch_Motor.Encoder->Speed[1];
+		
+		Arm_t->Pitch_Motor.SPID.Dout = Arm_t->Pitch_Motor.SPID.Derror * Arm_t->Pitch_Motor.SPID.Kd;
 
+        see_spid_derror = Arm_t->Pitch_Motor.SPID.Derror;
+        see_spid_dout = Arm_t->Pitch_Motor.SPID.Dout;
 
     if(roll!=0)Arm_t-> Roll_LockPosition = Arm_t->Roll_Motor.Encoder->Encode_Record_Val + roll;
 
@@ -381,14 +421,17 @@ void Arms_Drive(Three_D_Arm_t *Arm_t, int16_t roll, int16_t pitch, int16_t yaw, 
 //    MotorVelocityCurve(&Arm_t->Roll_Motor);
 
     //pwm输出
-    Arm_t->Second_Pitch.Compare += joint / 132 * 2;
+    Arm_t->Second_Pitch.Compare += (float)((float)joint / 132 * 1.5f);
     if (Arm_t->Second_Pitch.Compare>PWM_CMP_UPPER_LIMIT)Arm_t->Second_Pitch.Compare = PWM_CMP_UPPER_LIMIT;
     else if(Arm_t->Second_Pitch.Compare<PWM_CMP_LOWER_LIMIT)Arm_t->Second_Pitch.Compare = PWM_CMP_LOWER_LIMIT;
     __HAL_TIM_SetCompare(Arm_t->Second_Pitch.sTIM_Handle, Arm_t->Second_Pitch.sTIM_Channel, Arm_t->Second_Pitch.Compare);
 
+		pitch_anper=Arm_t->Pitch_Motor.anper;
+		pitch_pos=Arm_t->Pitch_Motor.Encoder->Encode_Record_Val;
+		
+		pitch_out=Arm_t->Pitch_Motor.SPID.out;
 
-
-//    taskEXIT_CRITICAL();
+    taskEXIT_CRITICAL();
 
     CAN1_C620_OR_C610_201_TO_204_SendMsg(Arm_t->Roll_Motor.SPID.out, Arm_t->Pitch_Motor.SPID.out,
                                          Arm_t->Yaw_Motor.SPID.out, Arm_t->Forward_Motor.SPID.out);

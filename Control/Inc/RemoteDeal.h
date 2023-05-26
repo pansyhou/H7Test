@@ -41,7 +41,13 @@ typedef enum {
 	Layout_End
 } Key_layout_e;
 
-
+typedef enum {
+    Camara_Lock = 0,
+    Camara_To_Horizontal = 1,
+    Camara_To_Ore = 2,
+    Camara_To_RescueCatch = 3,
+    Camara_Status_End
+} Camara_Status_e;
 
 typedef enum {
     Arm_Control_Classic = 0,
@@ -50,8 +56,13 @@ typedef enum {
     Arm_Control_End
 } Arm_Control_e;
 
+typedef enum {
+    Camara_Follow = 0,
+    Camara_No_Follow = 1,
+    Camara_is_Follow_End
+} Camara_is_Follow_e;
 /****************键盘控制状态结构体**************************/
-typedef  struct
+typedef __packed struct
 {
 //	unsigned char Electromagnet : 1; //电磁铁
 //	unsigned char Magazine : 1;		 //弹仓
@@ -85,11 +96,18 @@ typedef  struct
     // global status
     unsigned char Global_Status : 1 ; //0时为底盘独立模式，1为取矿独立模式
 
-    unsigned char Reserve_Status: 1;  //储矿0为关,1为开
+//    unsigned char Reserve_Status: 1;  //储矿0为关,1为开
+
+    unsigned char Camera_is_Follow : 1 ;//0为follow，1为手动
 
     unsigned char Arm_Control_Method: 2;  //储矿0为关,1为开
 
 	unsigned char Key_layout: 2;	//键盘层
+
+    unsigned char Camera_Status : 2 ;//0为正常的视角，1为看矿石视角，2为看救援抓
+    //如何切换三个状态的？status+1%3 或者%2
+
+
 
 } KeyBoard_State_t;
 

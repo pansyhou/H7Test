@@ -68,7 +68,10 @@ static void Remote_Data_Zero(void)
     RC_DataReload();//遥控器数据清零
 
     /*状态值初始化 全部暂停*/
-    REMOTE.state.Global_Status = 0;
+    REMOTE.state.Global_Status = Follow_Independent;
+    REMOTE.state.Camera_is_Follow = Camara_Follow;
+    REMOTE.state.Arm_Control_Method = Arm_Control_Classic;
+    REMOTE.state.Camera_Status = Camara_To_Horizontal;
 }
 
 int rcy;
@@ -81,8 +84,8 @@ int rcy;
 *************************************************************************************************/
 void Remote_Data_Init(void)
 {
-		/*获取遥控指针*/
-		REMOTE.RC_ctrl = RC_Get_RC_Pointer();
+    /*获取遥控指针*/
+    REMOTE.RC_ctrl = RC_Get_RC_Pointer();
     /*遥控数值清零*/
     Remote_Data_Zero();
     REMOTE.RC_ctrl->rc.s1 = REMOTE.RC_ctrl->rc.s2 = 2; //此键位为断电键位
@@ -100,7 +103,6 @@ void Remote_Data_Init(void)
     first_order_filter_init(&REMOTE.KZX, 0.08);
     first_order_filter_init(&REMOTE.KCV, 0.08);
     first_order_filter_init(&REMOTE.KCS, 0.08);
-
 
 
     
@@ -145,14 +147,70 @@ static void Key_Mouse_Deal(void)
     if (key & KEY_PRESSED_OFFSET_G && !(REMOTE.last_key & KEY_PRESSED_OFFSET_G)) {
         REMOTE.state.Global_Status = 1 - REMOTE.state.Global_Status;
     }
-    //夹矿状态切换
-    if (key & KEY_PRESSED_OFFSET_B && !(REMOTE.last_key & KEY_PRESSED_OFFSET_B)) {
-        REMOTE.state.Reserve_Status = 1 - REMOTE.state.Reserve_Status;
-    }
- //整车状态切换
+
+    //切换图传是否跟随
     if (key & KEY_PRESSED_OFFSET_F && !(REMOTE.last_key & KEY_PRESSED_OFFSET_F)) {
-        REMOTE.state.Arm_Control_Method = 1 - REMOTE.state.Arm_Control_Method;
+        if (REMOTE.state.Camera_is_Follow == Camara_No_Follow) {
+            REMOTE.state.Camera_Status = Camara_Lock;
+        }
+        REMOTE.state.Camera_is_Follow = 1 - REMOTE.state.Camera_is_Follow;
+
     }
+
+    //只有在底盘独立模式下才会生效的按键
+    if (REMOTE.state.Global_Status == Follow_Independent) {
+
+
+        //切换图传位置到固定位置快捷键
+        if (key & KEY_PRESSED_OFFSET_CTRL && key & KEY_PRESSED_OFFSET_Q) {
+            if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_Q)) {
+                REMOTE.state.Camera_Status = Camara_To_Horizontal;
+            }
+        } else if (key & KEY_PRESSED_OFFSET_CTRL && key & KEY_PRESSED_OFFSET_E) {
+            if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_E)) {
+                REMOTE.state.Camera_Status = Camara_To_Ore;
+            }
+        }
+        else if (key & KEY_PRESSED_OFFSET_CTRL && key & KEY_PRESSED_OFFSET_R) {
+            if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_R)) {
+                REMOTE.state.Camera_Status = Camara_To_RescueCatch;
+            }
+        }
+    } else if (REMOTE.state.Global_Status == Arm_Independent) {
+
+
+        //切换图传位置到固定位置快捷键
+        if (key & KEY_PRESSED_OFFSET_SHIFT && key & KEY_PRESSED_OFFSET_F) {
+            if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_F)) {
+                REMOTE.state.Camera_Status = Camara_To_Horizontal;
+            }
+        } else if (key & KEY_PRESSED_OFFSET_CTRL && key & KEY_PRESSED_OFFSET_F) {
+            if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_F)) {
+                REMOTE.state.Camera_Status = Camara_To_Ore;
+            }
+        }
+//        else if (key & KEY_PRESSED_OFFSET_CTRL && key & KEY_PRESSED_OFFSET_R) {
+//            if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_R)) {
+//                REMOTE.state.Camera_Status = Camara_To_RescueCatch;
+//            }
+//        }
+
+
+    }
+
+
+//    //切换图传位置到救援抓快捷键
+//    if (key & KEY_PRESSED_OFFSET_CTRL && key & KEY_PRESSED_OFFSET_F) {
+//        if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_F)) {
+//            REMOTE.state.Camera_Status = Camara_To_RescueCatch;
+//        }
+//    } //没按下快捷键,didnt press ctrl and q
+//    else if (!(key & KEY_PRESSED_OFFSET_CTRL) && key & KEY_PRESSED_OFFSET_F) {
+//        if(!(REMOTE.last_key & KEY_PRESSED_OFFSET_F)) {
+//            //only switch to Camara_To_Horizontal or Camara_To_Ore
+//            REMOTE.state.Camera_Status = (REMOTE.state.Camera_Status + 1) % 2;
+//        }
+//    }
 
 
 
@@ -271,9 +329,9 @@ static void Key_Mouse_Deal(void)
 
 /*************************** Key layout 处理 ***************************/
     if (key & KEY_PRESSED_OFFSET_SHIFT) {
-        REMOTE.state.Key_layout = Layout_Ctrl;
-    }else if (key & KEY_PRESSED_OFFSET_CTRL) {
         REMOTE.state.Key_layout = Layout_Shift;
+    }else if (key & KEY_PRESSED_OFFSET_CTRL) {
+        REMOTE.state.Key_layout = Layout_Ctrl;
     } else {
         REMOTE.state.Key_layout = Layout_Normal;
     }

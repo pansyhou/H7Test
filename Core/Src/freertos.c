@@ -118,7 +118,7 @@ void MX_FREERTOS_Init(void) {
   Task_RemoteHandle = osThreadCreate(osThread(Task_Remote), NULL);
 
   /* definition and creation of Task_Gimbal */
-  osThreadDef(Task_Gimbal, Gimbal_Task, osPriorityRealtime, 0, 256);
+  osThreadDef(Task_Gimbal, Gimbal_Task, osPriorityHigh, 0, 256);
   Task_GimbalHandle = osThreadCreate(osThread(Task_Gimbal), NULL);
 
   /* definition and creation of Task_BoardCommu */

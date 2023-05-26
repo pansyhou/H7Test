@@ -43,6 +43,41 @@ void ECF_CAN_Init(void) {
     //FDCAN rx start
     HAL_FDCAN_Start(&hfdcan1);
 
+    //filter init
+
+    sFilterConfig1.IdType = FDCAN_STANDARD_ID;
+    sFilterConfig1.FilterIndex = 0;
+    sFilterConfig1.FilterType = FDCAN_FILTER_MASK;
+    sFilterConfig1.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+    sFilterConfig1.FilterID1 = 0;
+    sFilterConfig1.FilterID2 = 0;
+    HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig1);
+
+    sFilterConfig1.IdType = FDCAN_EXTENDED_ID;
+    sFilterConfig1.FilterIndex = 0;
+    sFilterConfig1.FilterType = FDCAN_FILTER_MASK;
+    sFilterConfig1.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+    sFilterConfig1.FilterID1 = 0;
+    sFilterConfig1.FilterID2 = 0;
+    HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig1);
+
+    //配置全局过滤器以拒绝所有不匹配的帧
+    //reject frames which unmatched  , such as remote frames
+    HAL_FDCAN_ConfigGlobalFilter(&hfdcan2, FDCAN_REJECT, FDCAN_REJECT, FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+    //开启Rx FIFO 0 的新消息通知
+    //Activate FX fifo 0 notification
+    HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+    //开启溢满覆盖模式，当这个模式开启时，如果fifo溢满则会覆盖旧数据
+    //configure the overwrite mode ,when fifo is full ,  overwrite old data
+    HAL_FDCAN_ConfigRxFifoOverwrite(&hfdcan2, FDCAN_RX_FIFO0, FDCAN_RX_FIFO_OVERWRITE);
+
+    //FDCAN rx start
+    HAL_FDCAN_Start(&hfdcan2);
+
+
+
+
+
 }
 
 
